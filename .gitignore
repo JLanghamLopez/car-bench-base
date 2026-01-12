@@ -1,0 +1,35 @@
+#Run result artifacts
+# results/**
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# historical trajectories as they are too big
+historical_trajectories/
+
+# virtual environment
+.venv
+
+# Environment variables
+.env
+
+.DS_Store
+.vscode
+.idea
+todos.txt
+example_questions.json
+dummy.json
+pretty_print_json_list.py
+pretty_output.json
+
+external/
+
+car_bench/envs/car_voice_assistant/mock_data/navigation/routes_poi_location.jsonl
+car_bench/envs/car_voice_assistant/mock_data/navigation/routes_location_poi.jsonl
+car_bench/envs/car_voice_assistant/mock_data/navigation/routes_location_location.jsonl
+car_bench/envs/car_voice_assistant/synthetic_datapoint_generation/output/trajectories/trajectories.json
+car_bench/envs/car_voice_assistant/mock_data/navigation/pois.jsonl
+car_bench/envs/car_voice_assistant/mock_data/navigation/routes_index.jsonl
+car_bench/envs/car_voice_assistant/mock_data/navigation/routes_metadata.jsonl
