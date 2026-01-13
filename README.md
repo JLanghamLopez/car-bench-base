@@ -17,7 +17,7 @@ ANTHROPIC_API_KEY=...
 GEMINI_API_KEY =...
 ```
 
-4. Unfortunately, due to file size limit in the submission, we cannot include the mock databases. They will be published with the final version. For more details on the mock data please refer to: `car_bench/envs/car_voice_assistant/mock_data/readme.md`.
+4. Download the mock environment data from the [releases page](https://github.com/CAR-bench/car-bench/releases/tag/v1.0.0). The mock data files were too large to include in the git repository. After downloading, extract the zip file and place the navigation JSON files into `car_bench/envs/car_voice_assistant/data/navigation/` at the same level as `weather.jsonl` and `locations.jsonl`.
 
 ## Run
 
