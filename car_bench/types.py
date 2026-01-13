@@ -36,6 +36,7 @@ class TaskType(str, Enum):
 
 
 class Task(BaseModel):
+    task_id: str
     calendar_id: str
     actions: List[Action]
     persona: str
@@ -129,7 +130,8 @@ class EnvResetResponse(BaseModel):
 
 
 class EnvRunResult(BaseModel):
-    task_id: int
+    task_index: int  # Runtime index of the task in the task list
+    task_id: Optional[str] = None  # Persistent task identifier (e.g., "base_0")
     reward: float
     info: Dict[str, Any]
     traj: List[Dict[str, Any]]

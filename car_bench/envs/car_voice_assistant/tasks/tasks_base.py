@@ -22,6 +22,7 @@ from car_bench.types import Action, Task
 
 TASKS = [
     Task(
+        task_id="base_0",
         persona="You are 18 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_8382",
         instruction="You want to get some fresh air while driving in Luxembourg. You request to open the sunroof to about 50%. When the assistant mentions that the weather is rainy and asks for confirmation to proceed, you confirm that you still want to go ahead. You're also okay with the system opening the sunshade first if needed (it's a precondition you understand), if needed, you want the sunshade opened fully to 100%. You want this to be a natural conversation where you make the request and respond to any confirmations needed.",
@@ -129,6 +130,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_1",
         persona="You are 40 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_6406",
         instruction="You are driving in the early morning and the sun is getting bright and bothering you since your sunshade is currently fully open. You want to adjust the sunshade to partially close it to block some of the morning sun but still allow some light in. If the assistant asks for a specific percentage, you want to set it to 50% as a good compromise.",
@@ -220,6 +222,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_2",
         persona="You are 32 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_5333",
         instruction="You want to open the trunk door because you need to access something in the trunk or put something in the trunk. When the assistant asks for confirmation about opening the trunk door, you will explicitly say 'yes' to confirm and proceed with the action.",
@@ -311,6 +314,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_3",
         persona="You are 51 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_8382",
         instruction="You feel that the car is getting a bit stuffy since the air conditioning is off and there's not much air circulation. All the windows are currently closed and you want to open all the windows to 50% to get some fresh air and ventilation throughout the car. You specifically want all windows opened to the same level for consistent airflow. You do not want to turn on the air conditioning.",
@@ -402,6 +406,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_4",
         persona="You are 27 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_7772",
         instruction="You notice that the air inside the car feels stuffy and stale. The air circulation is currently set to recirculation mode, which is recycling the same air inside the car. You want to change this to fresh air mode so that outside air comes into the car to improve the air quality and freshness. If the assistant asks to increase the fan speed as it's currently 0, then you deny as you want to set it up manually yourself.",
@@ -493,6 +498,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_5",
         persona="You are 23 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_9817",
         instruction="You want to turn on the air conditioning in your car. You're feeling like the air quality could be better and want some air circulation improvement. Simply request to turn on the AC. You are aware that the car system will automatically close any windows that are open more than 20% and adjust the fan speed when AC is activated, and you're okay with these automatic changes. If the assistant asks if you also want to close the passenger window (at 10%), you do not want to close it and deny.",
@@ -609,6 +615,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_6",
         persona="You are 23 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. ",
         calendar_id="cal_3053",
         instruction="You are driving alone in the evening (around 8 PM) and want to create a more relaxing atmosphere in your car. The current ambient lighting is yellow, but you prefer brown ambient lighting for evening drives as it's more calming and relaxing. You will ask the assistant to change the ambient lights to brown. If the assistant asks for confirmation about turning the lights on, you want them on. If the assistant suggests alternative colors because brown is not possible, you're open to purple as a second choice.",
@@ -700,6 +707,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_7",
         persona="You are 63 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. ",
         calendar_id="cal_8766",
         instruction="You are a passenger in a car during an early morning commute in Warsaw. You notice that the temperature in the car is quite uncomfortable - the driver side is at 19 degrees while the passenger side is at 26 degrees, creating an unpleasant temperature difference. You want to ask the assistant to set a comfortable uniform temperature of 22 degrees Celsius for all zones in the car. If the assistant asks for clarification about the temperature or which zones, you want 22 degrees for all zones (both driver and passenger areas).",
@@ -791,6 +799,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_8",
         persona="You are 48 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_2773",
         instruction="You want to change the fan airflow direction to blow air toward the windshield. The current airflow is directed toward your feet, but you want it redirected to the windshield instead. If the assistant asks which specific direction you want, specify that you want the air directed to the windshield.",
@@ -882,6 +891,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_9",
         persona="You are 33 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. ",
         calendar_id="cal_4165",
         instruction="You are in your car and the air feels a bit stagnant. The fan is currently off and you want to turn it on to get some air circulation going. You want to set the fan to level 3 for moderate airflow. If the assistant asks what level you want, specify level 3.",
@@ -973,6 +983,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_10",
         persona="You are 50 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. ",
         calendar_id="cal_2703",
         instruction="You are driving early in the morning (7:30 AM) in Wiesbaden and notice reduced visibility due to cloudy weather conditions. You want to turn on the fog lights to improve safety. You will request to turn on the fog lights. The assistant will check the weather conditions and determine that confirmation is needed (since the weather is cloudy, not severe weather like thunderstorm or hail). When asked for confirmation, you will respond 'yes' to proceed. You expect the assistant to automatically activate low beam headlights if they're not already on and are okay with it.",
@@ -1085,6 +1096,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_11",
         persona="You are 43 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_6537",
         instruction="You are driving in the early morning (around 7:30 AM) and visibility conditions are challenging due to the low light conditions. You will ask the assistant to turn on the high beam headlights to improve visibility by saying something like 'Turn on the high beams' or 'Please activate the high beam headlights'. When the assistant asks for confirmation and explains the action details, you will respond with 'yes' to confirm the action.",
@@ -1181,6 +1193,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_12",
         persona="You are 65 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_6779",
         instruction="You are arriving at your destination and notice the headlights are still on. Since it's late afternoon and there's sufficient daylight, you want to turn off the low beam headlights to save battery. You will ask the assistant to turn off the low beam headlights specifically (use terms like 'turn off the low beam headlights' or 'turn off the low beams' - not just 'lights' or 'headlights' in general).",
@@ -1272,6 +1285,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_13",
         persona="You are 32 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_1286",
         instruction="You are the driver in the car and it's evening. You want to turn on your reading light so you can see better. When making the request, you should specifically ask to turn on the driver reading light.",
@@ -1363,6 +1377,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_14",
         persona="You are 45 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_9946",
         instruction="You're driving with a passenger and have had the seat heating on for a while. You're starting to feel a bit too warm now, and you want to turn down the seat heating for both you and your passenger to level 1 to be more comfortable. If the assistant asks what level you want, you'll say level 1.",
@@ -1454,6 +1469,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_15",
         persona="You are 58 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_4474",
         instruction="You are driving in Budapest on a cool April evening (around 22:45). Your hands are getting a bit cold on the steering wheel, so you want to turn on the steering wheel heating for comfort. You will ask the assistant to turn on steering wheel heating. If the assistant asks what level you want, you prefer medium heating (level 2).",
@@ -1545,6 +1561,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_16",
         persona="You are 32 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_3864",
         instruction="You are driving in the evening and notice that your front windshield is starting to fog up, making it difficult to see clearly. You want to turn on the front window defrost to clear the condensation and improve visibility for safe driving.",
@@ -1661,6 +1678,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_17",
         persona="You are 43 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_3864",
         instruction="You want to know about your car's battery and charging information. You're curious about the current battery status, charging capabilities, and remaining range. Ask the assistant for information about your car's battery or charging status - you want comprehensive information including current charge level, battery capacity, charging power capabilities, and remaining driving range.",
@@ -1752,6 +1770,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_18",
         persona="You are 44 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. ",
         calendar_id="cal_3560",
         instruction="You want to plan a longer trip and need to know your driving range. You're concerned about running out of battery and want to check how far you can drive from your current battery level down to a safe minimum level. When you ask the assistant, you want to know the driving distance from your current 50% charge down to around 10% charge (not completely empty, but a safe buffer level). If the assistant asks for specific percentages, tell them you want to go from 50% to 10%.",
@@ -1843,6 +1862,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_19",
         persona="You are 53 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_8382",
         instruction="You are driving in your car and want to call someone named Olivia using the car's voice assistant. You start by asking the assistant to find your contact named Olivia. When you first mention it, you only provide the first name 'Olivia'. The assistant will find multiple people named Olivia (Olivia Harris, Olivia Perez, and Olivia Young) and ask you to clarify. You want to specify that you're looking for Olivia Harris. Once the assistant finds the correct contact and shows you their details, you want to call that person using the car's hands-free calling system. You confirm that the assistant should call her.",
@@ -1944,6 +1964,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_20",
         persona="You are 62 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. ",
         calendar_id="cal_4594",
         instruction="You want to check your calendar for today. It's currently 4:15 PM on June 6th, 2025, and you want to see what appointments or meetings you have scheduled for today. You can ask something like 'What's on my calendar today?' or 'Do I have any meetings today?' You're looking for your schedule for the current day, and you're particularly interested in knowing if you have any remaining meetings since it's already mid-afternoon.",
@@ -2035,6 +2056,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_21",
         persona="You are 27 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_3705",
         instruction="You want to look up William Turner's contact information. You clearly ask to find William Turner or get his contact details. Your goal is to get his contact ID.",
@@ -2126,6 +2148,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_22",
         persona="You are 65 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_6148",
         instruction="You want to check your current navigation status and get detailed information about any active routes. You're curious about whether navigation is currently running and if so, what the route details are including waypoints, distances, and durations. If the assistant asks whether you want detailed information, you want the comprehensive details.",
@@ -2217,6 +2240,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_23",
         persona="You are 49 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_8466",
         instruction="You are planning a road trip and want to understand your car's range capabilities. You want to know how far you can drive if your battery charge level is at 75%. Ask the assistant to calculate the driving distance from 75% battery charge until empty.",
@@ -2308,6 +2332,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_24",
         persona="You are 37 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_6066",
         instruction="You're enjoying a nice morning drive on June 5th with your sunroof partially open (60%) to let in fresh air. However, you notice that while your sunroof is partly open, your sunshade is completely open, which creates an imbalanced roof setup. You want both roof components to work together harmoniously, so you ask the assistant to adjust the sunshade to match the sunroof position for coordinated roof control. You want them synchronized at the same opening level.",
@@ -2404,6 +2429,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_25",
         persona="You are 39 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_9818",
         instruction="You notice that your front windows (driver and passenger) are partially open but your rear windows are completely closed. You want all your windows to have the same position for better air flow consistency. You want the rear windows to be adjusted to match the front windows. If the assistant asks which windows to adjust, you want the rear windows (both driver rear and passenger rear) to be set to the same position as the front windows.",
@@ -2505,6 +2531,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_26",
         persona="You are 44 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. ",
         calendar_id="cal_3705",
         instruction="You feel warm and uncomfortable in the car on this October evening. You want to cool down efficiently by optimizing the climate system. Start by asking the assistant to close all the windows completely and turn on the air conditioning. You also want to set the fan speed to level 3 for good airflow. After the climate system is set up, you want to optimize the air circulation and ask the assistant to set it to fresh air mode for better cooling efficiency. You understand that the assistant may need to check current settings before making changes, and you're okay with the system making automatic adjustments as needed for energy efficiency.",
@@ -2611,6 +2638,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_27",
         persona="You are 36 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_6066",
         instruction="You want to personalize your car's interior lighting to match your car's exterior color. You'll ask the assistant to set the ambient lights to match your car color. When the assistant checks your car color and suggests setting the ambient lights to purple (to match), you want them to proceed with turning on the purple ambient lights. You're interested in creating a coordinated look between your car's exterior and interior lighting.",
@@ -2707,6 +2735,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_28",
         persona="You are 29 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_3705",
         instruction="You are feeling cold and notice that the fan direction is currently towards your head, but you want the warm air to blow toward your feet instead for better warmth. Ask the assistant to change the fan airflow direction to blow toward your feet. You want the air directed to your feet specifically, not a combination with head or windshield. You also don't feel much airflow so you want to increase the fan speed by one level.",
@@ -2808,6 +2837,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_29",
         persona="You are 51 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_6148",
         instruction="You feel that the air in the car is a bit stagnant and want to improve air circulation. You want to first check the current climate settings to understand what's currently configured. When you learn that the fan is currently off (level 0), you decide to set it to level 2 to get some gentle air circulation going without making it too strong.",
@@ -2904,6 +2934,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_30",
         persona="You are 31 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_1677",
         instruction="You are driving on a dark rural road in the evening and need better visibility ahead. You want to turn on the high beam headlights for better illumination. When the assistant asks for confirmation to turn on the high beams, you will confirm with 'yes'.",
@@ -3000,6 +3031,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_31",
         persona="You are 26 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_5264",
         instruction="You are in the car late at night (23:00) with someone in the passenger rear seat. It's getting dark and you want to optimize the reading lights based on who's actually in the car - you don't want to waste energy lighting up empty seats. Ask the assistant to adjust the reading lights appropriately: turn on lights for occupied seats and turn off lights for unoccupied seats.",
@@ -3101,6 +3133,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_32",
         persona="You are 30 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_4165",
         instruction="You're driving on a cold winter morning and the windows are starting to fog up, making it difficult to see clearly. Currently, several windows are partially open from yesterday. You want to handle this systematically: first close all the windows completely to improve the defrost efficiency, then turn on the front window defrost to clear the fog. You understand that the car's automatic systems might make additional adjustments (like turning on AC, adjusting fan speed, or changing airflow direction) when you activate the defrost, and you're okay with these automatic changes. If the assistant asks which windows to defrost, you specifically want the front window defrosted since that's most important for driving visibility.",
@@ -3212,6 +3245,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_33",
         persona="You are 60 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_2703",
         instruction="You had navigation running, but you stopped the navigation system earlier. Now you want to restart the same navigation route. Ask the assistant to restart or resume your previous navigation. When the assistant provides route details (199.22 km, 2 hours 26 minutes via K718), you should confirm that you want to proceed with restarting the navigation.",
@@ -3308,6 +3342,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_34",
         persona="You are 19 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_3560",
         instruction="You currently have an active navigation route set from Belgrade to Rome with a stop in Bucharest. You realize you want to change your intermediate stop to Frankfurt instead. You will ask the assistant to replace your current intermediate stop with Frankfurt in your current route. If the assistant shows you the current navigation state and asks which waypoint to replace, you will specify that you want to replace Bucharest. If the assistant asks for confirmation about route changes or shows multiple route options, you will accept the fastest route option.",
@@ -3417,6 +3452,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_35",
         persona="You are 40 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_5092",
         instruction="You are currently driving from Bochum to Milan for a business trip, but your plans have changed and you now need to go to Hamburg instead. Ask the assistant to change your navigation destination from Milan to Hamburg.",
@@ -3511,6 +3547,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_36",
         persona="You are 52 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_1677",
         instruction="You are currently on a multi-stop navigation route from Dortmund to Essen to Duisburg to Cologne. You have changed your mind and no longer want to go to the final destination (Cologne). You want to remove Cologne from your route so that Duisburg becomes your final destination instead. Ask the assistant to delete or remove the final destination from your current navigation route.",
@@ -3616,6 +3653,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_37",
         persona="You are 56 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_1286",
         instruction="You have a meeting today called 'Partnership Discussion'. It's now 14:15 and you think the meeting might have already started. If it has already started, you want to send an email to Frank Walker to let him know about your delay and apologize for being late. When the assistant asks you to confirm sending the email, you will say yes.",
@@ -3725,6 +3763,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_38",
         persona="You are 52 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_4371",
         instruction="You are currently in Milan and planning a trip to Prague. You want to check if you can reach Prague with your current battery charge without needing to stop for charging. Ask the assistant to help you determine if your current battery range is sufficient to reach Prague. You should express this as wanting to know if you can make it to Prague without charging, or asking about the feasibility of the trip with your current battery level. The assistant should calculate your remaining range and inform you that the trip is not possible with current charge (768 km route vs 178 km range) and you would need to charge.",
@@ -3829,6 +3868,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_39",
         persona="You are 63 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_9998",
         instruction="You are planning a long trip to Madrid. For this you want to gather information about the trip, you do not want to actually set anything to the navigation system yet. First, you want to know how long you need to charge to get to 80% state of charge at a dc charger around that is currently available. After you have this information, you assume that this will not be enough to get to Madrid, so you ask the assistant how many charging stops are required if you always charge once you get to 10 percent state of charge and charge until 80 percent state of charge. If there are multiple route options, you prefer the fastest route. You are okay with the assistant checking your current navigation state and calculating routes and charging times as needed.",
@@ -3960,6 +4000,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_40",
         persona="You are 34 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_3560",
         instruction="You are feeling uncomfortably warm inside the car even though it's December morning in Prague. The morning sun is streaming through the windows and heating up the interior, plus you had the heater running earlier during your drive. The windows are currently open (driver and passenger windows fully open, rear passenger window partially open) but the outside air isn't cooling you down effectively. You want to ask the assistant to turn on the air conditioning to cool down the car interior and reduce the temperature setting by 4 degree for the whole car. You expect the assistant might need to check the current temperature first, and you're aware that the car's automatic systems might close the windows and adjust the fan when AC is activated, which you're okay with since you want effective cooling.",
@@ -4071,6 +4112,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_41",
         persona="You are 44 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_5957",
         instruction="You want to create a cozy atmosphere in your car by turning on the ambient lighting. You want the ambient lights to match your car's exterior color to create a harmonious look. Tell the assistant that you want to turn on the ambient lights and ask them to match the lighting to your car's color. Do NOT reveal what color your car is in your initial request - you want the assistant to discover this information and then set the appropriate ambient lighting color. You expect the assistant to check what color your car is first, and then set the ambient lighting to match it.",
@@ -4167,6 +4209,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_42",
         persona="You are 45 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_9242",
         instruction="You are in the car and it feels a bit stuffy inside. You want some air circulation without opening more windows. You ask the assistant to provide some air circulation or airflow. In the end, you want the assistant to increase the fan speed level by two - all other climate and ac settings should remain the same.",
@@ -4263,6 +4306,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_43",
         persona="You are 51 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_4165",
         instruction="You are driving in the evening in Augsburg and notice that visibility is getting reduced due to weather conditions. You want to turn on the fog lights to improve visibility and safety. You understand that the assistant will need to check the current weather conditions first. When the assistant asks for confirmation to turn on the fog lights due to weather conditions, you will respond 'yes' to confirm that you want to proceed. You understand this confirmation requirement is a safety feature.",
@@ -4370,6 +4414,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_44",
         persona="You are 65 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. ",
         calendar_id="cal_2424",
         instruction="You are driving at night on a dark road in Wuppertal at 23:30 in December. The current low beam headlights are not providing sufficient visibility for safe driving. You want to turn on the high beam headlights for better illumination of the road ahead. When the assistant asks for confirmation about turning on the high beams (since this action requires confirmation), you will respond with 'yes' to confirm the action.",
@@ -4461,6 +4506,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_45",
         persona="You are 39 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_1977",
         instruction="You are currently driving from Madrid and have active navigation set to Paris. However, you've changed your mind and now want to go to Barcelona instead to find a good restaurant. You want to change your final destination to a restaurant in Barcelona. When the assistant shows you restaurant options, you want to choose 'El Rincón de Tapas' (the second option if multiple are presented). When route options to the restaurant are presented, you want to take the route via A53, A85, B884 (this should be the second route option, not the fastest). When the assistant proactively chooses a route, you end the the conversation without contradicting.",
@@ -4573,6 +4619,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_46",
         persona="You are 60 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_5883",
         instruction="You are feeling stuffy in the car and want to improve the air quality. You want to turn on the air conditioning and set the air circulation to fresh air mode to bring in outside air. First, ask the assistant to check what the current climate settings are. Then, when you learn the AC is off, ask to turn on the air conditioning. Finally, ask the assistant to set the air circulation to fresh air mode specifically (not recirculation or auto mode). You are okay with any automatic changes needed.",
@@ -4679,6 +4726,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_47",
         persona="You are 35 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_9314",
         instruction="You are driving from Paris to Bonn, Germany for an important business meeting today (May 6, 2025). You have a Sales Strategy meeting scheduled at 14:30 in Bochum (you still want to go to Bonn) and you need to ensure you have enough battery range for the long journey.  Ask the assistant to check your calendar for today's meetings and calculate how far you can drive from your current 80% battery down to 20% (your safe minimum before needing to charge) on your way to Bonn.  Once you get both pieces of information, ask the assistant to find charging stations along your route at about 350km distance (providing a 30km safety buffer before your maximum range). Tell the assistant that the first charging station that appears in the search results looks interesting - you don't want to add it to navigation but include the charging station name in the email.  After getting the charging station information, ask the assistant to send an email to the attendees of your 14:30 Sales Strategy meeting to inform them about a the charging stop that will add some minutes to your journey. The email should mention the specific charging station name and explain the slight delay due to the detour. Keep the email professional but concise.  When the assistant asks for confirmation to send the email, say 'yes' to confirm. If the assistant asks you if you want to add the charging station to your navigation, you deny as its just information for your email.",
@@ -4804,6 +4852,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_48",
         persona="You are 24 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_5092",
         instruction="You are currently driving from Dortmund to Düsseldorf and have active navigation set. During your trip, you start thinking about good restaurants and decide you'd rather go to Munich instead because you heard they have great restaurants there. You want to search for restaurants in Munich first to see what's available. After seeing the restaurant options (when the assistant shows you restaurants like Brauhaus Germania and Gasthaus Zum Adler), you decide you definitely want to change your final destination from Düsseldorf to Munich. You want to navigate to the city Munich, not to one of the restaurants. When the assistant presents multiple route options to Munich, you specifically want to take the second route option (via K816, A46) rather than the fastest route, because you prefer a more scenic route even if it takes a bit longer.",
@@ -4913,6 +4962,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_49",
         persona="You are 21 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_4594",
         instruction="You are on a European road trip and currently have an active navigation route planned from Andorra la Vella to Rome with stops in Paris and Milan (route: Andorra → Paris → Milan → Rome). However, you've decided to change your plans. First, you want to change your final destination from Rome to Stuttgart instead - you're excited about visiting Stuttgart's automotive museums. Actively ask for the shortest route. After that change, you realize that the Paris stop is no longer necessary for your new route and you want to remove it to make the journey more direct. Again ask actively for the shortest route for replacement. When the assistant presents you with multiple route options, you always prefer the shortest route available, even if it includes toll roads. Be clear about wanting to change the destination first, then remove the Paris waypoint second. If asked about route preferences, confirm you want the shortest route option.",
@@ -5040,6 +5090,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_50",
         persona="You are 52 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_3697",
         instruction="You are currently driving from Bremen to Dortmund with a planned stop in Essen afterwards. However, you've changed your mind and no longer want to continue to Essen after reaching Dortmund. You want to cancel the Essen destination and make Dortmund your final destination instead. Ask the assistant to remove Essen from your route so that your trip ends at Dortmund.",
@@ -5134,6 +5185,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_51",
         persona="You are 35 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_8708",
         instruction="You are in your car and notice the air feels stuffy and stale because the air circulation is set to recirculation mode. You want to get some fresh air from outside. You initially want to open all windows to 50% to let some natural fresh air in. After this is done, you want the AC turned on and you want to change the air circulation to fresh air mode. However, you understand that the car's policy might automatically close the windows when AC is turned on (since they conflict for energy efficiency). If the assistant mentions this policy or if the windows get automatically closed due to the AC being turned on, you accept this and understand that the fresh air circulation mode with AC will still help improve the air quality even without the windows being open. In the end at least AC should be turned on and the air circulation mode should be on fresh air.",
@@ -5250,6 +5302,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_52",
         persona="You are 35 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_7617",
         instruction="You are sitting in your car and feeling a bit chilly. The current temperature settings don't feel quite right to you. You want to start by setting the climate temperature to a comfortable 22 degrees for the driver zone. After that, you realize you'd also like some seat heating to get even warmer, so you ask for seat heating level 2 for the driver seat. Once the seat heating is active, you decide the air temperature could be a bit warmer too since you now have the seat heating complementing it, so you want to adjust the climate temperature up to 24 degrees for the same zone where you set the seat heating. You should make these requests in sequence as separate requests to the assistant.",
@@ -5351,6 +5404,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_53",
         persona="You are 27 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_6696",
         instruction="You are getting into your car late at night (23:15) with a passenger after being outside in cold weather. The car feels cold and you want to warm up efficiently without wasting energy on empty seats. You ask the assistant to warm up the car efficiently, focusing on seat zones currently occupied. When the assistant proposes different options to warm up the car, you want the assistant to optimize both air temperature and seat heating based on who's actually in the car to provide the best comfort. If the assistant asks for specific settings, you want 22 degrees for temperature and level 3 for seat heating.",
@@ -5452,6 +5506,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_54",
         persona="You are 51 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. ",
         calendar_id="cal_3864",
         instruction="You are feeling very cold on this December morning in Cologne. You want to warm up comprehensively. You want to set the climate temperature to a comfortable 22 degrees for all zones to even out the current temperature difference. You also want the car to increase the seat heating by two levels for the occupied seats - you don't want to waste energy on unoccupied seats but do want heating where people are sitting. Finally, you want to turn on the steering wheel heating to level 2 since your hands are cold from the winter weather. You want all of this done as part of a comprehensive warming strategy for the car.",
@@ -5563,6 +5618,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_55",
         persona="You are 59 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_9818",
         instruction="You are currently driving with active navigation set to Düsseldorf. However, you've changed your mind and now want to go to Dresden instead. Ask the assistant to change your navigation destination from your current destination to Dresden. If the assistant proposes you only one route options, you want at least a second alternative. You want to take the second route option to Dresden. If the assistant presents multiple route options, confirm that you want the second route.",
@@ -5670,6 +5726,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_56",
         persona="You are 60 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_5039",
         instruction="You are currently driving on a multi-stop route Paris. You have active navigation set up for this multi-stop route. However, you've decided you want to skip the Nuremberg stop and go directly to Paris instead. Tell the assistant you want to remove Nuremberg from your route and go straight to your final destination. If the assistant asks for clarification about which waypoint to delete, specify that you want to remove the Nuremberg stop. If the assistant shows you route alternatives for the direct route, choose the one via A11/A51.",
@@ -5780,6 +5837,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_57",
         persona="You are 19 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_5009",
         instruction="You are on a business trip with a multi-stop navigation route already set: Duisburg → Düsseldorf → Hamburg → Barcelona. You want to check some information about Barcelona first. Ask the assistant about route details if you would go directly from your current location to Barcelona. After getting the information, you realize you don't actually need to go to Barcelona anymore and want to remove it from your navigation, making Hamburg your final destination instead. Specifically ask the assistant to delete Barcelona from your current navigation route.",
@@ -5888,6 +5946,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_58",
         persona="You are 55 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_9818",
         instruction="You are currently on a business trip. You have navigation active and want to find a good restaurant at your destination to make a dinner reservation for tonight. You want to search for restaurants at your destination and then call one to check availability. When the assistant finds restaurants, choose the first restaurant mentioned (Brauhaus Germania) and ask the assistant to call it.",
@@ -5989,6 +6048,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_59",
         persona="You are 58 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. ",
         calendar_id="cal_7162",
         instruction="You want to send Rachel Walker an email with David Harris's contact information. First, ask the assistant to look up Rachel Walker's contact information so you can send her an email. When the assistant finds Rachel's email and asks about the email content, tell them you want to share David Harris's contact details with her. When the assistant shows you the email content and asks for confirmation to send, confirm with 'yes'.",
@@ -6098,6 +6158,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_60",
         persona="You are 37 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_9314",
         instruction="You are sitting in your car in Bratislava on a cool May evening around 6:15 PM. You feel cold and want to warm up your driving area comprehensively. You want to set the driver zone temperature to exactly 24 degrees Celsius. You also want seat heating for the driver seat - when the assistant asks about the level or if you need to specify, you want level 2 heating. You also want the assistant to also set up steering wheel heating to match your seat heating level for consistent warmth. You want all these heating functions to work together to make your driving position comfortable and warm.",
@@ -6199,6 +6260,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_61",
         persona="You are 44 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. ",
         calendar_id="cal_8503",
         instruction="You want to send an email reminder to your Marketing Campaign meeting attendees. Ask the assistant to send an email reminder to your Marketing Campaign meeting attendees. When the assistant asks what content to include, you want to send a friendly reminder about the meeting today at 3:30 PM in Bratislava. When the assistant asks for confirmation to send the email, you will say 'yes' to confirm sending.",
@@ -6310,6 +6372,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_62",
         persona="You are 36 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. ",
         calendar_id="cal_3885",
         instruction="You want to find a good restaurant in Stuttgart and call them to make a reservation. Ask the assistant to help you find restaurants in Stuttgart. When the assistant shows you restaurant options, choose the first one they mention (Gasthaus Zum Adler) and ask them to call that restaurant for you.",
@@ -6411,6 +6474,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_63",
         persona="You are 23 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_8708",
         instruction="You are driving in your car with your child in the back seat. You notice the current seat heating setup is inefficient: you want to turn off seat heating for every unoccupied seat, and set it to level 1 for every occupied seat. You ask the assistant if seat heating is now activated for you child. If the position where your child is sitting does not have seat heating, then you want to set the climate temperature to a comfortable 22 degrees Celsius for all zones to complement the heating optimization, else end the conversation.",
@@ -6522,6 +6586,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_64",
         persona="You are 48 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_4594",
         instruction="You are on a road trip from Monaco through Europe with multiple planned stops. You're currently driving with an active navigation route that goes Monaco -> Cologne -> Luxembourg. However, you realize you want to modify your route: first you want to add Stuttgart as an additional stop after Cologne. After modification, you want to search for a restaurant at your next intermediate stop as you're hungry. When the assistant presents different restaurant options, you are not satisfied, instead you want to replace Cologne (your current second stop) with Karlsruhe instead as you know a good restaurant there (the assistant should not search for one in Karlsruhe). When the assistant shows you route options, you always prefer the fastest route.",
@@ -6679,6 +6744,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_65",
         persona="You are 43 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_1515",
         instruction="You're driving and notice the front windshield is starting to fog up, reducing visibility. You want to address this systematically: first you want all windows closed as much as the passenger rear window, then activate the front window defrost to clear the fogging. Be specific when making your requests - mention you want ALL windows adjusted to match your rear passenger window position, and you want the FRONT window defrost activated. If the assistant has to take some automatic actions to make these actions efficient, you understand this and are okay with it.",
@@ -6800,6 +6866,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_66",
         persona="You are 51 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_2388",
         instruction="You are currently driving from Andorra la Vella to Paris with active navigation set (810km, 10h via L135). However, you decide you want to change your destination to Munich instead of Paris. Ask the assistant to change your navigation destination to Munich. When the assistant presents you with multiple route options to Munich, you want to select the fastest route. You expect the assistant to tell you about both the fastest and shortest routes in detail before asking which one you want.",
@@ -6904,6 +6971,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_67",
         persona="You are 21 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_7986",
         instruction="You want to optimize your car's climate control for energy efficiency. You've noticed that the climate system might be wasting energy and want to check the current settings and optimize them based on who's actually in the car. First, ask the assistant to check the current climate and seating situation to see if there are any inefficiencies. When you learn about the current state, you'll realize that empty seats are being heated (wasteful), so ask to turn off the seat heating for any unoccupied seats. After optimizing the seat heating, you want the temperature for the driver zone to match the current passenger temperature to maintain a balanced climate system. You care about saving energy and want the assistant to be smart about not heating areas that aren't being used.",
@@ -7015,6 +7083,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_68",
         persona="You are 56 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_6419",
         instruction="You are currently driving from Barcelona to Vienna for a business trip, and your navigation is active and guiding you there. However, it's getting late (7:30 PM) and you're feeling hungry. You realize you want to stop for dinner in Madrid instead of continuing directly to Vienna. Ask the assistant to help you find restaurants in Madrid. When the assistant presents the restaurant options, you notice that 'Mesón del Asador' stays open until 21:00h while 'Casa Pepe' closes at 19:00h, so you choose 'Mesón del Asador' since you'll still have time to eat there. When the assistant shows route options, you want the fastest route to get there efficiently. Confirm that you want to replace your current destination (Vienna) with Mesón del Asador in Madrid using the fastest route. If the assistant asks if you want to add the add the restaurant as intermediate stop or as destination, you want to set it as destination effectively replacing the current destination (Vienna).",
@@ -7127,6 +7196,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_69",
         persona="You are 40 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_9818",
         instruction="You're getting ready for your workday and want to check your calendar for today's meetings. You notice you have two meetings today - a Budget Discussion at 13:30 in Minsk and a Company Vision meeting at 17:30 in Vienna. You want to focus on the earlier meeting in Minsk since you need to plan your travel. Ask the assistant to help you check your calendar for today, then set up navigation to the Budget Discussion meeting in Minsk. When the assistant presents multiple route options, you want the fastest route since it's a long international trip. Once navigation is set up, you want to find restaurants along the route (along the whole route - no specific kilometer). When restaurants are presented, you're interested in Restaurant Ratskeller since it's early on the route (around 100km) and would be good for a meal break during the long journey. End the conversation when the restaurant is found - you do not want to add the restaurant as waypoint to the navigation.",
@@ -7244,6 +7314,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_70",
         persona="You are 25 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_8341",
         instruction="You are planning a business trip to Budapest for an important meeting. You want to email your business contact Grace Nelson to let her know your estimated travel time from Belgrade. Since you're driving an electric vehicle, you're also concerned about whether you'll need to stop for charging along the way. You want the assistant to help you plan the route, if charging stations is needed, you want to search for one around the 150-kilometer mark of the journey (since that would be roughly halfway), and send Grace an email with your travel time information. You do not want to actually set the charging station in the navigation system, but just include its details in the mail as information. When the assistant finds multiple contacts named Grace, you specifically want Grace Nelson. If there are multiple route options, you prefer the fastest route. If charging stations are found, you prefer the fastest charging one. When the assistant asks for confirmation to send the email, you will confirm with 'yes'.",
@@ -7376,6 +7447,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_71",
         persona="You are 29 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_3514",
         instruction="You are currently on a road trip and have an active multi-stop navigation set up in your car going from Wiesbaden to Stuttgart to Monaco. You're taking a break at your current location in Wiesbaden and want to look for restaurants nearby to potentially grab a meal. You're curious about what restaurant options are available at your current location. When the assistant shows you the restaurant options, you want to know more about the first restaurant in the list that appears, especially how long it takes to get there. After seeing the route information to that restaurant, you realize you don't want to go there, but you actually also want to cancel your final destination (Monaco) and end your trip at Stuttgart instead - you're getting tired of the long journey and want to shorten your trip.",
@@ -7483,6 +7555,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_72",
         persona="You are 58 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_5009",
         instruction="You are working late at night in Bonn and realize you need to urgently travel to Frankfurt for an early morning meeting. It's 23:15 and you want to get navigation set up immediately. When you ask the assistant to navigate to Frankfurt, you expect them to present route options. Since time is critical for your urgent trip, you will select the fastest route when given the choice. You want the navigation to be activated immediately once a route is selected.",
@@ -7587,6 +7660,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_73",
         persona="You are 37 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_8503",
         instruction="You just got into your car on a cold evening and it feels chilly despite the seat heating already being active. You want the assistant to systematically check all the current climate settings (temperatures, and seat heating levels) to understand what's currently set. After reviewing the settings, you notice the seat heating is on maximum for both seats, but since only you (the driver) are in the car, you want to optimize the heating to only heat occupied seats - keeping the driver seat at maximum level and turning off the passenger seat heating to save energy. After optimizing the seat heating for occupied seats only, you want to raise the driver zone temperature by 4 degrees Celsius to properly warm up from the current 18°C.",
@@ -7693,6 +7767,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_74",
         persona="You are 25 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_3239",
         instruction="You are planning a business trip from Madrid to Monaco and need to email your colleague Rachel Clark about your travel plans. You want to inform her about your route, timing, and any charging stops you'll need to make along the way.  First, tell the assistant you want to email Rachel Clark about your upcoming trip to Monaco. You want the assistant to help you plan the route and include the travel details in the email. You do not want the assistant to actually set anything to the navigation system, only gather information for the email.  If the assistant asks which contact named Clark, specify you want Rachel Clark from your work contacts (there are multiple people with the last name Clark).  When multiple route options are presented, choose the fastest route option. The assistant will tell you about the fastest and shortest routes - select the fastest one since it's a business trip and time is important. You want to check if the remaining range is enough for the trip. If not enough range you want to charge at your location (Madrid) before starting the trip.  When charging stations are found, select the first one mentioned (Repsol) for your initial charging stop since it has the highest charging power available. You want to charge to 100% and know how long it will take. You want to minimize charging stops along the route, so you want to know if another charging station stop is needed after charging to 100% close by. If there is another charging station stop needed, you don't want to plan further yet but just mention it in the email. The email should include an overview about your planned route. You want to sound professional but friendly in the email content.  When the assistant asks for confirmation to send the email, respond with 'yes' to confirm sending.",
@@ -7838,6 +7913,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_75",
         persona="You are 51 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_2093",
         instruction="You have a Risk Management meeting scheduled today at 1:30 PM in Frankfurt and want to send an email to all attendees with a weather update for the meeting location. You noticed it's early morning and want to be proactive about informing the team about potential weather issues that might affect their travel to Frankfurt and the meeting itself. Ask the assistant to check your calendar for today's meetings. When they show you the meetings, specify that you want to focus on the Risk Management meeting at 1:30 PM in Frankfurt. Ask the assistant to check the weather for Frankfurt at that specific meeting time and then send an email to the attendees informing them about the weather conditions in Frankfurt and any potential impacts on their travel and the meeting. When the assistant asks for confirmation to send the email, respond with 'yes'.",
@@ -7955,6 +8031,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_76",
         persona="You are 27 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_9998",
         instruction="You are the driver in the car on a cold late evening (22:30). The passenger side climate is set nicely but your driver side is too warm. You want to sync your driver zone settings to match the passenger zone settings for better comfort. Tell the assistant you want to set your driver zone climate and heating settings to match what the passenger side currently has. You are okay with every climate element that can be changed to sync the passenger.",
@@ -8061,6 +8138,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_77",
         persona="You are 28 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. ",
         calendar_id="cal_6779",
         instruction="You are currently driving with navigation active on a multi-stop trip from Wiesbaden to Munich with Frankfurt as an intermediate stop. During your journey, you decide you want to change your intermediate stop from Frankfurt to Milan instead. Start by telling the assistant you want to replace Frankfurt with Milan in your current navigation. When the assistant presents multiple route options, choose the fastest route for each segment even if it includes toll roads - you're okay with paying tolls for speed. When the assistant mentions toll roads on your chosen route, acknowledge this is acceptable to you. Confirm any changes when the assistant asks for confirmation.",
@@ -8183,6 +8261,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_78",
         persona="You are 58 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. ",
         calendar_id="cal_6537",
         instruction="You are driving to work and receive a call from Nathan Scott, a colleague, asking for contact details of other colleagues with the last name Scott. You tell him you'll send the information via email. After hanging up, you want to use the car's assistant to help you send the contact information. Start by asking the assistant to look up people with the last name 'Scott' because you want to send their contact information to Nathan. When the assistant presents multiple contacts, ask to send all the Scott contacts' information to Nathan. The assistant will present the email details and ask for confirmation before sending - you should confirm with 'yes'.",
@@ -8287,6 +8366,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_79",
         persona="You are 18 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_7617",
         instruction="You're feeling cold on this chilly morning and notice that your passenger side isn't as warm and comfortable as your driver side. You want to warm up the passenger area to match your driver side comfort level. First, you want to set the passenger side temperature to exactly 24 degrees Celsius. Then you want the passenger seat heating to match what you currently have set for your driver seat. Finally, you want your steering wheel heating to match the same level as the seat heating that gets applied to the passenger seat.",
@@ -8393,6 +8473,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_80",
         persona="You are 19 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_2189",
         instruction="You planned a European road trip from Minsk with stops in Belgrade and Munich, ending in Rome. However, your travel plans have changed and you need to shorten the trip significantly. You want to ask the assistant to help modify your current navigation by first removing Rome as the final destination, and then also removing the Belgrade stop entirely so you go directly from Minsk to Munich. When the assistant presents multiple route options during the modification process, always choose the fastest route. Be clear about wanting both destinations removed but let the assistant handle the technical navigation changes step by step. You understand this will simplify your route from a 4-stop journey to a direct 2-stop journey.",
@@ -8511,6 +8592,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_81",
         persona="You are 22 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_2390",
         instruction="You are on a road trip from Mannheim to Paris, with a planned stop in Stuttgart. You initially set up navigation for this multi-stop route: Mannheim → Stuttgart → Paris. However, you've now decided that you no longer need to stop in Stuttgart and want to go directly from Mannheim to Paris. Ask the assistant to remove Stuttgart from your route so you can drive directly to Paris without the intermediate stop. If the assistant presents multiple route options for the direct route, choose the shortest one. If the assistant proactively chooses a route option, stop the conversation.",
@@ -8616,6 +8698,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_82",
         persona="You are 38 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_3239",
         instruction="You have your navigation set from Riga to Stuttgart and are about to start your journey. Before you begin driving, you realize you'd prefer to visit the capital of germany instead of Stuttgart. You want to change your final destination to the capital of germany. If the assistant finds multiple route options, you want to choose the one that goes via K57, B65, if not available yet ask the assistant to provide more options and then choose the one that goes via K57, B65. If still not available, stop the conversation. If the assistant proactively chooses a route option, stop the conversation.",
@@ -8728,6 +8811,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_83",
         persona="You are 19 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_5269",
         instruction="**PHASE 1 - Initial Multi-Stop Route Setup:** You are on a business trip and need to plan a multi-stop route. You want to drive from your current location in Berlin to Bremen first for a meeting, and then continue to Amsterdam for another meeting. Ask the assistant to set up navigation for this multi-stop trip - specifically from Berlin to Bremen to Amsterdam.  When the assistant presents route options for Berlin to Bremen, you will see multiple alternatives. Choose the fastest route which goes via A25, K122, K192 (about 4 hours 29 minutes) since you're on a tight business schedule.   When the assistant presents route options for Bremen to Amsterdam, again choose the fastest route which goes via B259, K26, L361 (about 4 hours 1 minute). You want to set up the navigation with intermediate stop and final destination at once.  **PHASE 2 - Route Modification:** After the navigation is set up successfully with the multi-stop route Berlin→Bremen→Amsterdam, you receive an urgent call that your Amsterdam meeting has been cancelled. Tell the assistant about this development and ask them to remove Amsterdam from your route so that Bremen becomes your final destination instead. Always be clear that you prefer the fastest routes because you're on a business schedule and need to minimize travel time. The interaction should result in setting up the full multi-stop route first, then modifying it by removing the final destination.",
@@ -8840,6 +8924,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_84",
         persona="You are 41 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_5092",
         instruction="You are in Warsaw late at night (23:15) and need to travel to Hamburg urgently for an important early morning business meeting at 10:00 AM. You're concerned about whether your electric vehicle has enough charge for this long journey. Ask the assistant to search for navigation to Hamburg and check if you have enough battery. When the assistant presents multiple route options, choose the second route option (the one via B432, B132), but you do not want to set the route to the navigation system yet but wait if charging sation is needed to set up the navigation system all at once. When the assistant informs you that you don't have enough battery range and suggests charging stations, tell them you want to search for a charging station nearby in Warsaw before you start the trip - not along the route. When the assistant presents you multiple charging station options you want to go to the Ionity charging station because it has DC fast charging available. Ask the assistant to calculate how long charging will take if you charge to 95%. Only now confirm or request that you want to set up navigation to Hamburg with the charging stop first. For the route to the charging station you want to take the fastest, for the one to Hamburg you actively request that you want the second route option (the one via B432, B132).",
@@ -8983,6 +9068,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_85",
         persona="You are 41 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. ",
         calendar_id="cal_8382",
         instruction="You are on a European road trip and currently have an active navigation route set with multiple stops. Your current route goes from Minsk to Budapest, then to Rome, and finally to Luxembourg. However, you've changed your mind and want to replace Rome with Cologne instead. Tell the assistant that you want to replace Rome in your current route with Cologne. If the assistant asks which waypoint to replace, specify that you want to replace Rome. When the assistant presents route options for Budapest to Cologne, choose the route via B441 (the fastest and shortest option without tolls). When the assistant presents route options for Cologne to Luxembourg, choose the route via L397, L496, L686 (the fastest and shortest option without tolls). Afterwards you want the assistant to check your battery range if charging station is needed soon. Since you have low battery (25% charge, 112 km range) and your first destination Budapest is 1119 km away, you need charging stations along the way to Budapest, you want so search for around 100km from now to have some buffer left. If charging stations are found, you're interested in the EV+ charging station option and want to know how long charging will take until standard 80% state of charge.",
@@ -9139,6 +9225,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_86",
         persona="You are 37 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_6406",
         instruction="You are on a European road trip driving from Leipzig to Hamburg with a stop in Frankfurt. You currently have active navigation set up for this multi-stop route (Leipzig → Frankfurt → Hamburg). However, you've decided you want to change your final destination from Hamburg to Barcelona instead, as you've gotten excited about visiting Spain. Actively ask the assistant for multiple route options to Barcelona. When presented with multiple route options, choose the shortest route (1257.75km from Frankfurt to Barcelona, no tolls). You want the assistant to set up the new navigation. After setting up the new navigation, you see that you have 98% battery charge, which gives you enough range to comfortably reach Frankfurt, however, you are concerned about your electric vehicle's range for the much longer journey to Barcelona and want to make sure you can reach Barcelona safely. When the assistant tells you a charging station is needed, tell them you want to maintain at least 15% battery charge as a safety buffer and that he should search for a charging station at a point where approximately 15% is reached. When the assistant found a charging station, you ask the assistant if there is a phone number available because you want to ask them if you can reserve a charging spot. Confirm or request that the assistant should call the phone number.",
@@ -9273,6 +9360,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_87",
         persona="You are 64 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. ",
         calendar_id="cal_6696",
         instruction="You notice that your passenger seems cold and uncomfortable. You're concerned about your passenger's comfort and want the assistant to check the current climate settings first to understand the situation, then optimize the passenger area temperature. If the assistant mentions the significant temperature difference between zones, say that's exactly what you to fix it for the passenger's comfort. You specifically want the climate temperature for passenger zone set to the same as for the driver zone.",
@@ -9369,6 +9457,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_88",
         persona="You are 23 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_2673",
         instruction="You are on a business trip with multiple planned stops. You currently have navigation active with a route that goes from Brussels to Bonn to Berlin to Leipzig. However, you've realized that you no longer need to stop in Bonn and want to remove it from your route to save time. When you tell the assistant to remove Bonn from your route, if they present multiple route options for the new direct Brussels to Berlin connection, choose the shortest route option (which happens to also be the fastest at 750km via L556, K463, K440). You confirm when the assistant wants to remove Bonn in the navigation system. You are aware that this is a long distance and your car might need charging along the way, so you're asking the assistant if charging is needed, if yes, he should search for a charging station. When the charging stations options are presented, you are satisfied but don't want to add it to the route yet as you want to check later again if the plugs are still available.",
@@ -9500,6 +9589,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_89",
         persona="You are 39 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_1690",
         instruction="You are on a business trip with an active multi-stop navigation route from Hamburg to Frankfurt (466km via fastest route) and then from Frankfurt to Cologne (179km, making total trip 645km). You're currently in Hamburg at 2:30 PM and are concerned about your battery level which is at 65%. You want to check if you can make it to your destinations while keeping at least 20% battery as a safety buffer.  Ask the assistant to help you check your current range and route information. You prefer the fastest route options for your business trip. When the assistant calculates your usable range (which should be about 342km from your current 65% down to your 20% safety buffer), you'll realize this isn't enough for the full 645km journey.  You want to find DC fast charging stations along your actual route (Hamburg to Frankfurt first) that have available plugs, specifically around 250km into your journey (which is well within your comfortable battery range). You prefer charging stations that are currently open and have DC plugs for faster charging.  After the assistant shows you the charging options, you realize that your business meeting in Frankfurt might run late and you don't really need to continue to Cologne tonight anyway. You want to cancel the Cologne destination and make Frankfurt your final destination instead. Ask the assistant to remove Cologne from your route so Frankfurt becomes your endpoint. You don't want to include the charging station station yet as you want to search again later. If the assistant asks if you want to add the charging station as intermediate stop, then you deny. ",
@@ -9622,6 +9712,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_90",
         persona="You are 47 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_5883",
         instruction="You are feeling stuffy in the car and want to improve the air quality. You want to turn on the air conditioning and set the air circulation to fresh air mode to bring in outside air. First, ask the assistant to check what the current climate settings are. Then, when you learn the AC is off, ask to turn on the air conditioning. Finally, ask the assistant to set the air circulation to fresh air mode specifically (not recirculation or auto mode).",
@@ -9733,6 +9824,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_91",
         persona="You are 58 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_9818",
         instruction="You want to open the sunroof if the outside temperature is more than 25 degrees. Aks the assistant to open the sunroof to 60% if the outside temperature is more than 25 degrees. If the assistant asks for confirmation, you confirm. You understand that the assistant might need to open the sunshade as well, if so, you want to open the sunshade to 100% - if the assistant does not mention the sunshade, don't ask for it.",
@@ -9844,6 +9936,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_92",
         persona="You are 34 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. ",
         calendar_id="cal_8382",
         instruction="You want to set the fog lights on. Ask the assistant to turn on the fog lights. If the assistant asks for confirmation, you confirm. If the assistant says that the fog lights cannot be turned on because the high beam headlights are on, you want to turn off the high beam headlights and still turn on the fog lights.  If the assistant asks again for confirmation to turn on the fog lights, you confirm again.",
@@ -9955,6 +10048,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_93",
         persona="You are 48 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_2189",
         instruction="You feel the climate is not optimally set in the car. You first want to turn on air conditioning. You ask the assistant to turn on the air conditioning. You understand that the assistant might need to make additional changes to to make air conditioning effective, and you are okay with any additional automatic changes. After air conditioning is on and assistant potentially performed additional changes, you want to activate window defrost for the front window. You ask the assistant to turn on the window defrost for the front window. If the assistants asks to specify which window you want to turn on defrost, you specify the front window only. If the assistant again needs to make additional changes to make window defrost effective, you are again okay with this and confirm any additional changes needed.",
@@ -10086,6 +10180,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_94",
         persona="You are 34 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. ",
         calendar_id="cal_7739",
         instruction="You want to turn on air conditioning as the air feels stuff. Ask the assistant to turn on air conditioning. You understand that the assistant might need make additional changes to make air conditioning effective, and you are okay with it. If the assistant asks which windows to close, you want to close only the windows that need to be closed for effective air conditioning - if the assistant does not mention windows, you do not ask for it. ",
@@ -10202,6 +10297,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_95",
         persona="You are 34 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_6903",
         instruction="You want to navigate to Munich. You ask the assistant to navigate to Munich. If the assistant presents route options and does not mention any toll roads, you want to take the fastest route. If the assistant mentions toll roads, you want to take the fastest route that does not include toll roads. Do not actively ask for toll roads, only react if the assistant mentions toll roads, default is fastest route.",
@@ -10303,6 +10399,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_96",
         persona="You are 26 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_8503",
         instruction="You want to set up navigation. You want to set up a charging stop in Mannheim, if it does not rain there, else drive to Cologne. Ask the assistant to navigate to a charging station in Mannheim if it does not rain there, else you want to navigate to Cologne. If the assistant find it does not rain in Mannheim, you want to navigate to the fastest charging station found in Mannheim. If the assistant asks for confirmation to set up navigation either to the charging station or to Cologne, you confirm. For route selection, you want to take the shortest route, not the fastest - if the assistant proactively chooses a route without asking, you do not contradict it",
@@ -10420,6 +10517,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_97",
         persona="You are 34 years old. Your conversation style when using the voice assistant is 'Questioning: seeking information, clarification. You see the assistant as a knowledgeable assistant.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_2779",
         instruction="You want to set up navigation at the start of your trip. You first want to plan the whole trip and set the complete multi-stop trip at once in the navigation system. First, you want to navigate to Belgrade on the fastest route without toll roads if it's not more than 10 minutes longer than the fastest route. You specifically do not want to set up navigation yet but first plan the whole trip.After the stop in Belgrade, you want to navigate to a supermarket that is still open (at the time you'll arrive - it is expected that the assistant is smart enough to search for open supermarkets around your ETA, so just ask for a supermarket that is still open). For the route from Belgrade to the supermarket you just want the fastest route. So navigation should be from current location --> Belgrade (fastest route without tolls if not 10 minutes longer) --> supermarket (open, fastest route). If the assistant asks if he should start the navigation or set up the multi-stop navigation, you confirm.",
@@ -10540,6 +10638,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_98",
         persona="You are 55 years old. Your conversation style when using the voice assistant is 'Conversational: casual, chatty, human-like manner. You see the assistant like a helping friend.'. You are regularly using the voice assistant and understand automotive terminology and technical terms like HVAC, ambient lighting, regenerative braking.",
         calendar_id="cal_4055",
         instruction="You want to plan the charging stop for your upcoming meeting. First you ask the assistant what the minimum and maximum charging time is to still reach your next upcoming meeting by time and range with 5 minutes buffer to meeting start and 40 kilometer buffer range, if you charge at the fastest charger around your current location. When the assistant asks which charging station to select, you want to select the fastest charging station plug available. If the assistant asks for route selection, you always want to take the fastest route. If the assistant says the fastest charging plug is currently occupied, you don't mind and still want to select the fastest charger for time calulcation. After calculation you say to the assistant that if the minimum charging time is less than 12 minutes (assistant should do the comparison), then you want to set up navigation first to the charging station and then to the meeting location - you want the fastest route for every route segment else if the minimum charging time is 12 minutes or more, you directly want to set up navigation to the meeting location on the fastest route. Also, when navigation system is fully set up you ask the assistant that if the maximum charging time is less than 50 minutes but more than 30 minutes (assistant should do the comparison), then you want to additionally call the charging station provider to reserve the plug - but only after the navigation system is fully set up.",
@@ -10688,6 +10787,7 @@ TASKS = [
         task_type="base",
     ),
     Task(
+        task_id="base_99",
         persona="You are 46 years old. Your conversation style when using the voice assistant is 'Commanding: straightforward, imperative sentences. You see the assistant as a executor.'. You are using the voice assistant sporadically and prefer simple everyday language over technical terms, you get anxious about technical explanations but persist through interactions.",
         calendar_id="cal_9998",
         instruction="You want to set up navigation with a charging station stop where you can eat at a fast food place in the meanwhile. Ask the assistant to set up navigation to Andorra la Vella with a charging station stop included that starts strictly within dinner time between 19:00 and 19:45 where you can also eat fast food that is open. If the assistant asks for route selection, you always want to take the fastest route. For the charging station, you don't care if the charging station currently has an avilable plug, it's charging station power or if its AC or DC etc.: it is just important that there is an open fast food place at the same kilometer mark. You are only satisfied with fast food, you don't want to eat at a reastaurant or something similar. If the assistants ask if he should start navigation or set up navigation system, you confirm, you want navigation: current location --> charging station with open fast food place around lunch time (start 19:00 - 19:45, end open) --> Andorra la Vella. Be specific that the intermediate stop should be the charging station, not the fast food place.",

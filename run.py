@@ -7,10 +7,18 @@ import threading
 import os
 import random
 import traceback
+import warnings
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from math import comb
 from typing import Any, Callable, Dict, List, Optional
+
+# Suppress Pydantic serialization warnings from litellm
+warnings.filterwarnings(
+    "ignore",
+    message=".*Pydantic serializer warnings.*",
+    category=UserWarning,
+)
 
 from litellm import provider_list
 
@@ -191,6 +199,50 @@ def _reset_context_state(
     task_config.reset(token_task_config)
 
 
+def get_task_indices_to_run(
+    env,
+    args: argparse.Namespace,
+    ckpt_path: str,
+) -> List[int]:
+    """
+    Determine which task indices to run based on args.
+    
+    Args:
+        env: The environment with tasks
+        args: Command-line arguments containing task_id_filter, num_tasks, task_type, task_split
+        ckpt_path: Checkpoint path for logging
+        
+    Returns:
+        List of task indices to run
+    """
+    if args.task_id_filter and len(args.task_id_filter) > 0:
+        # Filter by specific task IDs
+        task_id_set = set(args.task_id_filter)
+        available_task_ids = {task.task_id for task in env.tasks}
+        
+        # Check for task IDs not in the current split
+        missing_task_ids = task_id_set - available_task_ids
+        if missing_task_ids:
+            print(f"⚠️  WARNING: The following task IDs are not in the '{args.task_type}_{args.task_split}' split: {sorted(missing_task_ids)}")
+        
+        # Get indices of tasks that are actually available
+        found_task_ids = task_id_set & available_task_ids
+        idxs_to_run = [i for i, task in enumerate(env.tasks) if task.task_id in found_task_ids]
+        
+        if len(idxs_to_run) == 0:
+            raise ValueError(f"No tasks found matching task IDs: {args.task_id_filter}")
+        
+        actual_task_ids = [env.tasks[i].task_id for i in idxs_to_run]
+        print(f"Running {len(idxs_to_run)} tasks with IDs: {actual_task_ids} (checkpoint path: {ckpt_path})")
+    else:
+        # Use first num_tasks from the filtered split
+        num_tasks = len(env.tasks) if args.num_tasks == -1 else min(args.num_tasks, len(env.tasks))
+        idxs_to_run = list(range(num_tasks))
+        print(f"Running {num_tasks} tasks from {args.task_type}_{args.task_split} split (checkpoint path: {ckpt_path})")
+    
+    return idxs_to_run
+
+
 def run(
     args: argparse.Namespace,
     ckpt_path: str,
@@ -205,31 +257,19 @@ def run(
         policy_evaluator_strategy=args.policy_evaluator_strategy,
         policy_evaluator_model=args.policy_evaluator_model,
         policy_evaluator_provider=args.policy_evaluator_model_provider,
+        task_type=args.task_type,
         task_split=args.task_split,
         use_user_as_a_tool_tools=args.use_user_as_a_tool_tools,
         user_thinking=args.user_thinking,
     )
-    # agent = agent_factory(
-    #     tools_info=env.tools_info,
-    #     wiki=env.wiki,
-    #     args=args,
-    # )
-    end_index = (
-        len(env.tasks) if args.end_index == -1 else min(args.end_index, len(env.tasks))
-    )
+    
+    idxs_to_run = get_task_indices_to_run(env, args, ckpt_path)
+    
     results: List[EnvRunResult] = []
     lock = threading.Lock()
-    if args.task_ids and len(args.task_ids) > 0:
-        print(f"Running tasks {args.task_ids} (checkpoint path: {ckpt_path})")
-    else:
-        print(
-            f"Running tasks {args.start_index} to {end_index} (checkpoint path: {ckpt_path})"
-        )
+    
     for i in range(args.num_trials):
-        if args.task_ids and len(args.task_ids) > 0:
-            idxs = args.task_ids
-        else:
-            idxs = list(range(args.start_index, end_index))
+        idxs = idxs_to_run.copy()
         if args.shuffle:
             random.shuffle(idxs)
 
@@ -240,6 +280,7 @@ def run(
                 user_model=args.user_model,
                 policy_evaluator_strategy=args.policy_evaluator_strategy,
                 policy_evaluator_model=args.policy_evaluator_model,
+                task_type=args.task_type,
                 task_split=args.task_split,
                 user_provider=args.user_model_provider,
                 policy_evaluator_provider=args.policy_evaluator_model_provider,
@@ -277,7 +318,8 @@ def run(
                     task_index=idx,
                 )
                 result = EnvRunResult(
-                    task_id=idx,
+                    task_index=idx,
+                    task_id=isolated_env.tasks[idx].task_id,
                     reward=res.reward,
                     info=res.info,
                     traj=res.messages,
@@ -285,7 +327,8 @@ def run(
                 )
             except Exception as e:
                 result = EnvRunResult(
-                    task_id=idx,
+                    task_index=idx,
+                    task_id=isolated_env.tasks[idx].task_id,
                     reward=0.0,
                     info={"error": str(e), "traceback": traceback.format_exc()},
                     traj=[],
@@ -300,7 +343,7 @@ def run(
                 end_conversation_failure.reset(token_end_conversation_failure)
             print(
                 "✅" if result.reward == 1 else "❌",
-                f"task_id={idx}",
+                f"task_id={result.task_id} (index={idx})",
                 result.info,
             )
             print("-----")
@@ -372,18 +415,18 @@ def display_metrics(results: List[EnvRunResult]) -> None:
     rewards = [r.reward for r in results]
     avg_reward = sum(rewards) / len(rewards)
     # c from https://arxiv.org/pdf/2406.12045
-    c_per_task_id: dict[int, int] = {}
+    c_per_task_index: dict[int, int] = {}
     for result in results:
-        if result.task_id not in c_per_task_id:
-            c_per_task_id[result.task_id] = 1 if is_successful(result.reward) else 0
+        if result.task_index not in c_per_task_index:
+            c_per_task_index[result.task_index] = 1 if is_successful(result.reward) else 0
         else:
-            c_per_task_id[result.task_id] += 1 if is_successful(result.reward) else 0
+            c_per_task_index[result.task_index] += 1 if is_successful(result.reward) else 0
     pass_hat_ks: dict[int, float] = {}
     for k in range(1, num_trials + 1):
         sum_task_pass_hat_k = 0
-        for c in c_per_task_id.values():
+        for c in c_per_task_index.values():
             sum_task_pass_hat_k += comb(c, k) / comb(num_trials, k)
-        pass_hat_ks[k] = sum_task_pass_hat_k / len(c_per_task_id)
+        pass_hat_ks[k] = sum_task_pass_hat_k / len(c_per_task_index)
     print(f"🏆 Average reward: {avg_reward}")
     print("📈 Pass^k")
     for k, pass_hat_k in pass_hat_ks.items():
@@ -440,19 +483,30 @@ def main():
         help="The sampling temperature for the action model",
     )
     parser.add_argument(
-        "--task-split",
+        "--task-type",
         type=str,
         default="base",
-        choices=["base", "hallucination", "disambiguation", "train", "test", "dev"],
-        help="The split of tasks to run",
+        choices=["base", "hallucination", "disambiguation"],
+        help="The type of tasks to run",
     )
-    parser.add_argument("--start-index", type=int, default=0)
-    parser.add_argument("--end-index", type=int, default=-1, help="Run all tasks if -1")
     parser.add_argument(
-        "--task-ids",
+        "--task-split",
+        type=str,
+        default="train",
+        choices=["train", "test"],
+        help="The split of tasks to run (train or test)",
+    )
+    parser.add_argument(
+        "--num-tasks",
         type=int,
+        default=-1,
+        help="Number of tasks to run from the filtered split. Use -1 to run all tasks (default)",
+    )
+    parser.add_argument(
+        "--task-id-filter",
+        type=str,
         nargs="+",
-        help="(Optional) run only the tasks with the given IDs",
+        help="(Optional) run only specific task IDs (e.g., base_0 base_2 disambiguation_5). Takes precedence over --num-tasks",
     )
     parser.add_argument("--log-dir", type=str, default="results")
     parser.add_argument(
@@ -543,11 +597,12 @@ def main():
     )
     user_thinking_suffix = "-user-thinking" if args.user_thinking else ""
 
-    file_str = f"{args.log_dir}/{args.task_split}/{args.model.split('/')[-1]}{thinking_suffix}{interleaved_thinking_suffix}{reasoning_effort_suffix}-{args.temperature}_range_{args.start_index}-{args.end_index}_user-{args.user_model}{user_thinking_suffix}-{args.user_strategy}_{time_str}.json"
+    # Determine task count for filename
+    task_count = len(args.task_id_filter) if args.task_id_filter else (args.num_tasks if args.num_tasks != -1 else "all")
+    file_str = f"{args.log_dir}/{args.task_type}_{args.task_split}/{args.model.split('/')[-1]}{thinking_suffix}{interleaved_thinking_suffix}{reasoning_effort_suffix}-{args.temperature}_tasks_{task_count}_user-{args.user_model}{user_thinking_suffix}-{args.user_strategy}_{time_str}.json"
 
     if not os.path.exists(args.log_dir):
         os.makedirs(args.log_dir)
-
     results = run(
         args=args,
         ckpt_path=file_str,

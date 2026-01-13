@@ -1,5 +1,7 @@
 # Copyright Sierra
 
+import json
+from pathlib import Path
 from typing import Optional, Union
 
 from car_bench.envs.base import Env
@@ -24,41 +26,47 @@ class MockCarVoiceAssistantDomainEnv(Env):
         user_provider: Optional[str] = None,
         policy_evaluator_provider: Optional[str] = None,
         user_thinking: bool = False,
-        task_split: str = "test",
+        task_type: str = "base",
+        task_split: str = "train",
         task_index: Optional[int] = None,
         evaluate_policy: Optional[bool] = False,
         score_tool_execution_errors: Optional[bool] = False,
         score_policy_errors: Optional[bool] = False,
         use_user_as_a_tool_tools: bool = False,
     ):
-        match task_split:
-            case "test":
-                from car_bench.envs.car_voice_assistant.tasks.tasks_test import (
-                    TASKS_TEST as tasks,
-                )
-            case "train":
-                from car_bench.envs.car_voice_assistant.tasks.tasks_train import (
-                    TASKS_TRAIN as tasks,
-                )
-            case "dev":
-                from car_bench.envs.car_voice_assistant.tasks.tasks_dev import (
-                    TASKS as tasks,
-                )
+        # Load tasks based on task_type
+        match task_type:
             case "base":
                 from car_bench.envs.car_voice_assistant.tasks.tasks_base import (
-                    TASKS as tasks,
+                    TASKS as all_tasks,
                 )
             case "hallucination":
                 from car_bench.envs.car_voice_assistant.tasks.tasks_hallucination import (
-                    TASKS as tasks,
+                    TASKS as all_tasks,
                 )
             case "disambiguation":
                 from car_bench.envs.car_voice_assistant.tasks.tasks_disambiguation import (
-                    TASKS as tasks,
+                    TASKS as all_tasks,
                 )
-
             case _:
-                raise ValueError(f"Unknown task split: {task_split}")
+                raise ValueError(f"Unknown task type: {task_type}")
+
+        # Filter tasks based on task_split
+        tasks_dir = Path(__file__).parent / "tasks"
+        splits_file = tasks_dir / "task_splits.json"
+        
+        with open(splits_file, 'r') as f:
+            splits = json.load(f)
+        
+        split_key = f"{task_type}_{task_split}"
+        if split_key not in splits:
+            raise ValueError(f"Unknown split combination: {split_key}")
+        
+        # Get the task IDs for this split
+        split_task_ids = set(splits[split_key])
+        
+        # Filter tasks to only include those in the split
+        tasks = [task for task in all_tasks if task.task_id in split_task_ids]
 
         all_tools_plus_user_as_a_tool = None
         wiki_with_user_as_a_tool = None
