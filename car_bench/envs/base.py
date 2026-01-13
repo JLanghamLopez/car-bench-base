@@ -262,14 +262,24 @@ class Env(object):
 
         if done:
             if not actions[0].name in USER_AS_A_TOOL_ACTION_NAMES:
+                # Extract tool_call_ids from the last assistant message to match with tool results
+                # This is required by OpenAI/litellm API - tool responses must have tool_call_id
+                tool_call_ids = []
+                for msg in reversed(messages):
+                    if msg.get("role") == "assistant" and msg.get("tool_calls"):
+                        tool_call_ids = [tc["id"] for tc in msg["tool_calls"]]
+                        break
+                
                 for i, action in enumerate(remaining_actions):
-                    messages.append(
-                        {
-                            "role": "tool",
-                            "name": action.name,
-                            "content": observations[i],
-                        }
-                    )
+                    tool_msg = {
+                        "role": "tool",
+                        "name": action.name,
+                        "content": observations[i],
+                    }
+                    # Add tool_call_id if available (required by OpenAI API spec)
+                    if i < len(tool_call_ids):
+                        tool_msg["tool_call_id"] = tool_call_ids[i]
+                    messages.append(tool_msg)
             reward_res = self.calculate_reward(messages)
             reward = reward_res.reward
             info.reward_info = reward_res
