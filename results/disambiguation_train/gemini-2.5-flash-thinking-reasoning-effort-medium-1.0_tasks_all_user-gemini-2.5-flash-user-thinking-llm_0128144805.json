@@ -1,0 +1,35 @@
+[
+  {
+    "task_index": 0,
+    "task_id": "disambiguation_0",
+    "reward": 0.0,
+    "info": {
+      "error": "cannot access local variable 'user_output' where it is not associated with a value",
+      "traceback": "Traceback (most recent call last):\n  File \"run.py\", line 314, in _run\n    res = orchestrator.execute(\n        env=isolated_env,\n        task_index=idx,\n    )\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/orchestrator.py\", line 121, in execute\n    env_reset_res = env.reset(task_index=task_index)\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/envs/base.py\", line 121, in reset\n    initial_observation = self.user.reset(\n        persona=self.task.persona,\n    ...<3 lines>...\n        disambiguation_element_internal=self.task.disambiguation_element_internal,\n    )\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/envs/user/user.py\", line 252, in reset\n    return self.generate_next_message(self.messages)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/envs/user/user.py\", line 103, in generate_next_message\n    user_output.conversation_control_keyword, user_output.user_message\n    ^^^^^^^^^^^\nUnboundLocalError: cannot access local variable 'user_output' where it is not associated with a value\n"
+    },
+    "traj": [],
+    "trial": 0
+  },
+  {
+    "task_index": 2,
+    "task_id": "disambiguation_4",
+    "reward": 0.0,
+    "info": {
+      "error": "cannot access local variable 'user_output' where it is not associated with a value",
+      "traceback": "Traceback (most recent call last):\n  File \"run.py\", line 314, in _run\n    res = orchestrator.execute(\n        env=isolated_env,\n        task_index=idx,\n    )\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/orchestrator.py\", line 121, in execute\n    env_reset_res = env.reset(task_index=task_index)\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/envs/base.py\", line 121, in reset\n    initial_observation = self.user.reset(\n        persona=self.task.persona,\n    ...<3 lines>...\n        disambiguation_element_internal=self.task.disambiguation_element_internal,\n    )\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/envs/user/user.py\", line 252, in reset\n    return self.generate_next_message(self.messages)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/envs/user/user.py\", line 103, in generate_next_message\n    user_output.conversation_control_keyword, user_output.user_message\n    ^^^^^^^^^^^\nUnboundLocalError: cannot access local variable 'user_output' where it is not associated with a value\n"
+    },
+    "traj": [],
+    "trial": 0
+  },
+  {
+    "task_index": 1,
+    "task_id": "disambiguation_2",
+    "reward": 0.0,
+    "info": {
+      "error": "cannot access local variable 'user_output' where it is not associated with a value",
+      "traceback": "Traceback (most recent call last):\n  File \"run.py\", line 314, in _run\n    res = orchestrator.execute(\n        env=isolated_env,\n        task_index=idx,\n    )\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/orchestrator.py\", line 121, in execute\n    env_reset_res = env.reset(task_index=task_index)\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/envs/base.py\", line 121, in reset\n    initial_observation = self.user.reset(\n        persona=self.task.persona,\n    ...<3 lines>...\n        disambiguation_element_internal=self.task.disambiguation_element_internal,\n    )\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/envs/user/user.py\", line 252, in reset\n    return self.generate_next_message(self.messages)\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^\n  File \"/Users/q661583/Code/car-bench-copy/car-bench/car_bench/envs/user/user.py\", line 103, in generate_next_message\n    user_output.conversation_control_keyword, user_output.user_message\n    ^^^^^^^^^^^\nUnboundLocalError: cannot access local variable 'user_output' where it is not associated with a value\n"
+    },
+    "traj": [],
+    "trial": 0
+  }
+]
