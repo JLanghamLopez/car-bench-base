@@ -94,10 +94,15 @@ class ToolCallingAgent(Agent):
                             raise ValueError(
                                 "reasoning_effort must be 'none', 'disable', 'low', 'medium', 'high', or an integer value"
                             )
-                        completion_kwargs["thinking"] = {
-                            "type": "enabled",
-                            "budget_tokens": thinking_budget,
-                        }
+                        if self.model == "claude-opus-4-6" and self.provider == "anthropic":
+                            completion_kwargs["thinking"] = {
+                                "type": "adaptive"
+                            }
+                        else:
+                            completion_kwargs["thinking"] = {
+                                "type": "enabled",
+                                "budget_tokens": thinking_budget,
+                            }
 
                     if self.interleaved_thinking:
                         if self.provider == "bedrock":
@@ -119,7 +124,7 @@ class ToolCallingAgent(Agent):
                 print(f"Error calling LLM: {e}.")
                 if i == 3:
                     raise e
-                time.sleep(60)
+                time.sleep(120)
 
         # Update metrics in state
         latest_prompt_tokens = res.usage.prompt_tokens
