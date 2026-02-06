@@ -30,17 +30,18 @@ The benchmark is instantiated in an automotive in-car voice assistant domain, wh
 
 | Rank | Model | Avg Pass^3 | Organization |
 |------|-------|:----------:|--------------|
-| 1st | GPT-5 (thinking) | 54% | OpenAI |
-| 2nd | GPT-5.2 (thinking) | 53% | OpenAI |
-| 3rd | Claude-Opus-4.5 (thinking) | 52% | Anthropic |
-| 4th | Claude-Sonnet-4 (thinking) | 47% | Anthropic |
-| 5th | Gemini-2.5-flash (thinking) | 41% | Google |
-| 6th | Gemini-2.5-pro (auto-thinking) | 38% | Google |
-| 7th | GPT-4.1 | 37% | OpenAI |
-| 8th | Gemini-2.5-flash | 34% | Google |
-| 9th | Qwen3-32b (thinking) | 31% | Alibaba |
-| 10th | GPT-Oss-120b (thinking) | 28% | OpenAI |
-| 11th | xLAM-2-32b | 16% | Salesforce |
+| 1st | Claude-Opus-4.6 (auto-thinking) | 58% | Anthropic |
+| 2nd | GPT-5 (thinking) | 54% | OpenAI |
+| 3rd | GPT-5.2 (thinking) | 53% | OpenAI |
+| 4th | Claude-Opus-4.5 (thinking) | 52% | Anthropic |
+| 5th | Claude-Sonnet-4 (thinking) | 47% | Anthropic |
+| 6th | Gemini-2.5-flash (thinking) | 41% | Google |
+| 7th | Gemini-2.5-pro (auto-thinking) | 38% | Google |
+| 8th | GPT-4.1 | 37% | OpenAI |
+| 9th | Gemini-2.5-flash | 34% | Google |
+| 10th | Qwen3-32b (thinking) | 31% | Alibaba |
+| 11th | GPT-Oss-120b (thinking) | 28% | OpenAI |
+| 12th | xLAM-2-32b | 16% | Salesforce |
 
 ### Key Contributions
 
@@ -298,9 +299,10 @@ Performance of frontier models across task types. Average is computed across tas
 
 | Group | Model | Avg Pass^3 | Base Pass^1 | Base Pass^3 | Base Pass@3 | Hall Pass^1 | Hall Pass^3 | Hall Pass@3 | Disamb Pass^1 | Disamb Pass^3 | Disamb Pass@3 |
 |:-----:|:------|:----------:|:-----------:|:-----------:|:-----------:|:------------:|:------------:|:------------:|:---------------:|:---------------:|:---------------:|
-| Prop. | GPT-5 (thinking) | **.54** | .76 | .66 | **.88** | **.74** | **.60** | **.82** | .46 | .36 | .68 |
-| Prop. | GPT-5.2 (thinking) | .53 | .74 | .61 | .85 | **.74** | .57 | .81 | **.56** | **.42** | **.70** |
-| Prop. | Claude-Opus-4.5 (thinking) | .52 | **.77** | **.67** | .86 | .63 | .52 | .74 | **.56** | .38 | .66 |
+| Prop. | Claude-Opus-4.6 (auto-thinking) | **.58** | **.84** | **.80** | **.93** | .59 | .48 | .71 | **.58** | **.46** | .68 |
+| Prop. | GPT-5 (thinking) | .54 | .76 | .66 | .88 | **.74** | **.60** | **.82** | .46 | .36 | .68 |
+| Prop. | GPT-5.2 (thinking) | .53 | .74 | .61 | .85 | **.74** | .57 | .81 | .56 | .42 | **.70** |
+| Prop. | Claude-Opus-4.5 (thinking) | .52 | .77 | .67 | .86 | .63 | .52 | .74 | .56 | .38 | .66 |
 | Prop. | Claude-Sonnet-4 (thinking) | .47 | .74 | .63 | .83 | .60 | .46 | .71 | .42 | .32 | .62 |
 | Prop. | Gemini-2.5-flash (thinking) | .41 | .67 | .59 | .80 | .56 | .41 | .75 | .38 | .22 | .52 |
 | Prop. | Gemini-2.5-pro (auto-thinking) | .38 | .67 | .53 | .80 | .48 | .34 | .71 | .38 | .28 | .50 |
