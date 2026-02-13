@@ -306,7 +306,7 @@ Performance of frontier models across task types. Average is computed across tas
 
 ## Citation
 
-If you use CAR-bench in your research, please cite:
+If you use CAR-bench (https://arxiv.org/abs/2601.22027v1) in your research, please cite:
 
 ```bibtex
 @misc{kirmayr2026carbenchevaluatingconsistencylimitawareness,
@@ -533,6 +533,6 @@ Preference Handling ❌
 
 <div align="center">
 
-**[⬆ Back to Top](#car-bench-consistency-and-limit-awareness-reliability-benchmark-for-llm-agents)**
+**[⬆ Back to Top](#car-bench-evaluating-the-consistency-and-limit-awareness-of-llm-agents-under-real-world-uncertainty)**
 
 </div>
