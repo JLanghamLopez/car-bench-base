@@ -270,6 +270,61 @@
             text-align: justify;
         }
 
+        /* Key insights */
+        .key-insights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 850px;
+            margin: 2.5rem auto 0;
+        }
+
+        .insight-card {
+            display: flex;
+            gap: 1rem;
+            padding: 1.3rem 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid;
+        }
+
+        .insight-completion {
+            background: #fff5f5;
+            border-left-color: #e53e3e;
+        }
+
+        .insight-reliable {
+            background: #fffff0;
+            border-left-color: #d69e2e;
+        }
+
+        .insight-card .insight-icon {
+            flex-shrink: 0;
+            font-size: 1.4rem;
+            margin-top: 0.15rem;
+        }
+
+        .insight-completion .insight-icon { color: #e53e3e; }
+        .insight-reliable .insight-icon { color: #d69e2e; }
+
+        .insight-card h3 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .insight-card p {
+            font-size: 0.88rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .key-insights {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Key highlights */
         .highlights-grid {
             display: grid;
@@ -991,12 +1046,25 @@
         <div class="container">
             <h2 class="section-title">Abstract</h2>
             <p class="abstract-text">
-                CAR-bench is a benchmark designed to evaluate the reliability of multi-turn, tool-using Large Language Model (LLM) agents in realistic, user-facing environments under uncertainty, ambiguity, and capability constraints. Unlike existing agent benchmarks that primarily assess task completion under idealized and fully specified conditions, CAR-bench shifts the evaluation focus toward <strong>epistemic reliability</strong>: whether an agent knows when it can act, when it must gather more information, and when it should explicitly refuse or defer action.
+                Existing benchmarks for Large Language Model (LLM) agents focus on task completion under idealistic settings but overlook reliability in real-world, user-facing applications. In domains such as in-car voice assistants, users often issue incomplete or ambiguous requests, creating intrinsic uncertainty that agents must manage through dialogue, tool use, and policy adherence. We introduce CAR-bench, a benchmark for evaluating consistency, uncertainty handling, and capability awareness in multi-turn, tool-using LLM agents in an in-car assistant domain. The environment features an LLM-simulated user, domain policies, and 58 interconnected tools spanning navigation, productivity, charging, and vehicle control. Beyond standard task completion, CAR-bench introduces <strong>Hallucination tasks</strong> that test agents' limit-awareness under missing tools or information, and <strong>Disambiguation tasks</strong> that require resolving uncertainty through clarification or internal information gathering. Baseline results reveal large gaps between occasional and consistent success on all task types. Even frontier reasoning LLMs achieve less than 50% consistent pass rate on Disambiguation tasks due to premature actions, and frequently violate policies or fabricate information to satisfy user requests in Hallucination tasks, underscoring the need for more reliable and self-aware LLM agents in real-world settings.
             </p>
-            <br>
-            <p class="abstract-text">
-                The benchmark is instantiated in an automotive in-car voice assistant domain, which naturally combines incomplete and ambiguous user requests, heterogeneous APIs, mutable environment state, and strict domain policies. CAR-bench provides a fully synthetic and independent evaluation environment, including an LLM-simulated user, 58 interconnected tools spanning navigation, vehicle control, charging, and productivity, and 19 domain-specific policies governing safe and appropriate assistant behavior.
-            </p>
+
+            <div class="key-insights">
+                <div class="insight-card insight-completion">
+                    <div class="insight-icon"><i class="fas fa-comment-slash"></i></div>
+                    <div>
+                        <h3>Completion &gt; Compliance</h3>
+                        <p>&ldquo;I don't know&rdquo;, &ldquo;I cannot do this&rdquo;, or asking for clarification is often the <em>correct</em> response &mdash; yet models guess to satisfy the user. Agents prioritize appearing helpful over being honest about their limitations.</p>
+                    </div>
+                </div>
+                <div class="insight-card insight-reliable">
+                    <div class="insight-icon"><i class="fas fa-dice"></i></div>
+                    <div>
+                        <h3>Capable, But Not Reliable</h3>
+                        <p>The gap between &ldquo;works sometimes&rdquo; and &ldquo;works reliably&rdquo; is significant &mdash; and this is where deployment fails. A model that solves a task once but fails the next two attempts isn't ready for production.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1372,32 +1440,32 @@
             <div style="margin-top: 3rem;">
                 <h2 class="section-title">Key Findings</h2>
                 <div class="findings-list">
-                    <div class="finding-item">
-                        <div class="finding-icon"><i class="fas fa-exclamation-triangle" style="color: #e53e3e;"></i></div>
+                    <div class="finding-item" style="border-left: 3px solid #d69e2e;">
+                        <div class="finding-icon"><i class="fas fa-dice" style="color: #d69e2e;"></i></div>
                         <div>
-                            <h4>Significant Consistency Gap</h4>
-                            <p>Even the best models show substantial drops from Pass@3 (latent capability) to Pass^3 (consistency), highlighting that agents can solve tasks but fail to do so reliably across runs.</p>
+                            <h4>Capable, But Not Reliable</h4>
+                            <p>The best model achieves 93% Pass@3 on base tasks (it <em>can</em> solve them) but only 80% Pass^3 (it does so <em>consistently</em>). For disambiguation, the gap is even larger: 70% vs. 46%. A model that works once but fails the next two runs isn't deployment-ready.</p>
                         </div>
                     </div>
-                    <div class="finding-item">
-                        <div class="finding-icon"><i class="fas fa-ghost" style="color: #805ad5;"></i></div>
+                    <div class="finding-item" style="border-left: 3px solid #e53e3e;">
+                        <div class="finding-icon"><i class="fas fa-comment-slash" style="color: #e53e3e;"></i></div>
                         <div>
-                            <h4>Weak Limit-Awareness</h4>
-                            <p>Models struggle with hallucination tasks, with the best Pass^3 at only 60%. When tools or parameters are unavailable, agents frequently fabricate responses rather than acknowledging limitations.</p>
+                            <h4>Models Guess Instead of Refusing</h4>
+                            <p>When tools or data are missing, the best model still hallucinates 40% of the time (Pass^3 = 60% on hallucination tasks). Agents fabricate tool results or proceed incorrectly rather than saying &ldquo;I cannot do this&rdquo; &mdash; prioritizing user satisfaction over honesty.</p>
                         </div>
                     </div>
-                    <div class="finding-item">
-                        <div class="finding-icon"><i class="fas fa-question-circle" style="color: #d69e2e;"></i></div>
+                    <div class="finding-item" style="border-left: 3px solid #805ad5;">
+                        <div class="finding-icon"><i class="fas fa-question-circle" style="color: #805ad5;"></i></div>
                         <div>
-                            <h4>Disambiguation is Hardest</h4>
-                            <p>Disambiguation tasks are the most challenging (best Pass^3 = 46%), indicating that resolving ambiguity &mdash; whether through user preferences or explicit clarification &mdash; remains a fundamental challenge.</p>
+                            <h4>Asking for Clarification is Hardest</h4>
+                            <p>Disambiguation is the most challenging task type (best Pass^3 = 46%). When requests are ambiguous, agents act prematurely rather than checking user preferences or asking for clarification &mdash; another form of prioritizing completion over correctness.</p>
                         </div>
                     </div>
-                    <div class="finding-item">
-                        <div class="finding-icon"><i class="fas fa-trophy" style="color: #38a169;"></i></div>
+                    <div class="finding-item" style="border-left: 3px solid #3182ce;">
+                        <div class="finding-icon"><i class="fas fa-brain" style="color: #3182ce;"></i></div>
                         <div>
                             <h4>Reasoning Helps, But Not Enough</h4>
-                            <p>Models with explicit reasoning capabilities (thinking modes) generally outperform their non-reasoning counterparts, but even the top model achieves only 58% average Pass^3.</p>
+                            <p>Models with explicit reasoning (thinking modes) generally outperform their non-reasoning counterparts, but even the top model achieves only 58% average Pass^3. Reasoning reduces errors but doesn't solve the fundamental compliance-over-completion bias.</p>
                         </div>
                     </div>
                 </div>
