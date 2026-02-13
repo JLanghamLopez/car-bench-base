@@ -8,7 +8,7 @@
 
 *A benchmark for evaluating epistemic reliability of multi-turn, tool-using LLM agents under uncertainty*
 
-[Website](https://car-bench.github.io/car-bench/) • [Paper](#citation) • [Installation](#installation) • [Usage](#usage) • [Results](#baseline-results) • [Documentation](USAGE.md)
+[Website](https://car-bench.github.io/car-bench/) • [Paper](#citation) • [Installation](#installation) • [Usage](#usage) • [Results](#baseline-results)
 
 </div>
 
