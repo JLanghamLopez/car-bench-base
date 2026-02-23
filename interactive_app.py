@@ -589,6 +589,10 @@ def api_start():
     task_index = data.get("task_index", 0)
     role = data.get("role", "user")  # "user" or "agent"
     evaluate_policy = data.get("evaluate_policy", True)
+    agent_model = data.get("agent_model", "claude-sonnet-4-5-20250929")
+    agent_provider = data.get("agent_provider", "anthropic")
+    user_model = data.get("user_model", "gemini-2.5-flash")
+    user_provider = data.get("user_provider", "gemini")
 
     try:
         # Pre-load mock data
@@ -621,12 +625,12 @@ def api_start():
             # Replace the user with our web UI user
             env.user = web_user
 
-            # Create LLM agent (Claude)
+            # Create LLM agent
             agent = ToolCallingAgent(
                 tools_info=env.tools_info,
                 wiki=env.wiki,
-                model="claude-sonnet-4-5-20250929",
-                provider="anthropic",
+                model=agent_model,
+                provider=agent_provider,
                 temperature=0.0,
             )
         else:
@@ -634,8 +638,8 @@ def api_start():
             env = get_env(
                 "car_voice_assistant",
                 user_strategy="llm",
-                user_model="gemini-2.5-flash",
-                user_provider="gemini",
+                user_model=user_model,
+                user_provider=user_provider,
                 task_type=task_type,
                 task_split=task_split,
                 task_index=task_index,

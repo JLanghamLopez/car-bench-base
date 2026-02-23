@@ -564,6 +564,87 @@
   }
   .eval-list li { margin-bottom: 2px; }
 
+  /* Eval details toggle */
+  .eval-details-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 12px;
+    padding: 6px 0;
+    font-size: 11px;
+    color: var(--accent);
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: var(--font);
+    font-weight: 600;
+  }
+  .eval-details-toggle:hover { color: #8dacff; }
+  .eval-details-toggle .arrow { transition: transform 0.2s; display: inline-block; }
+  .eval-details-toggle.open .arrow { transform: rotate(90deg); }
+  .eval-details-section {
+    display: none;
+    margin-top: 8px;
+    padding: 8px;
+    background: var(--bg2);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+  }
+  .eval-details-section.open { display: block; }
+  .eval-detail-group {
+    margin-bottom: 10px;
+  }
+  .eval-detail-group:last-child { margin-bottom: 0; }
+  .eval-detail-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .eval-action-compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    font-size: 11px;
+    font-family: var(--mono);
+  }
+  .eval-action-col-header {
+    font-weight: 700;
+    color: var(--text-dim);
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 10px;
+  }
+  .eval-action-item {
+    padding: 3px 6px;
+    border-radius: 4px;
+    color: var(--text-dim);
+    word-break: break-all;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+  .eval-action-item.match { background: rgba(46, 204, 113, 0.1); color: var(--success); }
+  .eval-action-item.miss { background: rgba(231, 76, 60, 0.1); color: var(--error); }
+  .eval-action-item.extra { background: rgba(243, 156, 18, 0.1); color: var(--warning); }
+  .eval-raw-json {
+    max-height: 300px;
+    overflow-y: auto;
+    font-size: 10px;
+    font-family: var(--mono);
+    white-space: pre-wrap;
+    word-break: break-all;
+    color: var(--text-dim);
+    padding: 8px;
+    background: var(--bg);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
   /* Context bar (always visible at top of side panel) */
   .context-bar {
     padding: 8px 12px;
@@ -701,14 +782,54 @@
       </div>
     </div>
 
+    <!-- LLM Model Configuration -->
+    <div id="llm-config-row" class="setup-row" style="background: var(--bg3); padding: 12px; border-radius: var(--radius); border: 1px solid var(--border);">
+      <div id="agent-model-config">
+        <div style="font-size: 11px; font-weight: 600; color: var(--accent); margin-bottom: 8px;">🤖 Agent Model (LLM)</div>
+        <div class="setup-row" style="margin-bottom: 0;">
+          <div class="setup-field">
+            <label>Model</label>
+            <input type="text" id="setup-agent-model" value="claude-sonnet-4-5-20250929" placeholder="e.g. claude-sonnet-4-5-20250929" style="font-size: 12px;">
+          </div>
+          <div class="setup-field">
+            <label>Provider</label>
+            <select id="setup-agent-provider">
+              <option value="anthropic" selected>Anthropic</option>
+              <option value="gemini">Gemini</option>
+              <option value="openai">OpenAI</option>
+              <option value="bedrock">Bedrock</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div id="user-model-config" class="hidden">
+        <div style="font-size: 11px; font-weight: 600; color: #7fb3e0; margin-bottom: 8px;">👤 User Model (LLM)</div>
+        <div class="setup-row" style="margin-bottom: 0;">
+          <div class="setup-field">
+            <label>Model</label>
+            <input type="text" id="setup-user-model" value="gemini-2.5-flash" placeholder="e.g. gemini-2.5-flash" style="font-size: 12px;">
+          </div>
+          <div class="setup-field">
+            <label>Provider</label>
+            <select id="setup-user-provider">
+              <option value="gemini" selected>Gemini</option>
+              <option value="anthropic">Anthropic</option>
+              <option value="openai">OpenAI</option>
+              <option value="bedrock">Bedrock</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="setup-row" style="background: var(--bg3); padding: 12px; border-radius: var(--radius); border: 1px solid var(--border);">
       <div class="setup-field">
         <label><input type="checkbox" id="setup-policy-eval" checked style="margin-right: 6px;">Enable Policy Evaluation</label>
         <div style="font-size: 10px; color: var(--text-dim); margin-top: 4px;">Runs LLM-based policy compliance check at session end (requires Gemini API key)</div>
       </div>
       <div style="flex: 2; font-size: 11px; color: var(--text-dim); align-self: center;">
-        <div id="role-info-user"><strong style="color:#7fb3e0">You = Driver</strong>: Claude Sonnet acts as the agent (needs ANTHROPIC_API_KEY). Gemini simulates the user LLM for evaluation.</div>
-        <div id="role-info-agent" class="hidden"><strong style="color:#b39ddb">You = Agent</strong>: Gemini 2.5 Flash simulates the driver (needs GEMINI_API_KEY). You use tools and respond.</div>
+        <div id="role-info-user"><strong style="color:#7fb3e0">You = Driver</strong>: The selected agent model acts as the in-car assistant. You provide user instructions.</div>
+        <div id="role-info-agent" class="hidden"><strong style="color:#b39ddb">You = Agent</strong>: The selected user model simulates the driver. You use tools and respond.</div>
       </div>
     </div>
 
@@ -857,6 +978,10 @@ function toggleLlmConfig() {
   const role = document.getElementById('setup-role').value;
   document.getElementById('role-info-user').classList.toggle('hidden', role !== 'user');
   document.getElementById('role-info-agent').classList.toggle('hidden', role !== 'agent');
+  // Show agent model config when human is user (LLM acts as agent)
+  document.getElementById('agent-model-config').classList.toggle('hidden', role !== 'user');
+  // Show user model config when human is agent (LLM acts as user)
+  document.getElementById('user-model-config').classList.toggle('hidden', role !== 'agent');
 }
 
 async function loadTasks() {
@@ -904,6 +1029,10 @@ async function startSession() {
   const split = document.getElementById('setup-task-split').value;
   currentRole = document.getElementById('setup-role').value;
   const evaluatePolicy = document.getElementById('setup-policy-eval').checked;
+  const agentModel = document.getElementById('setup-agent-model').value.trim();
+  const agentProvider = document.getElementById('setup-agent-provider').value;
+  const userModel = document.getElementById('setup-user-model').value.trim();
+  const userProvider = document.getElementById('setup-user-provider').value;
 
   document.getElementById('btn-start').disabled = true;
   document.getElementById('btn-start').textContent = 'Loading...';
@@ -918,6 +1047,10 @@ async function startSession() {
         task_index: selectedTaskIndex,
         role: currentRole,
         evaluate_policy: evaluatePolicy,
+        agent_model: agentModel,
+        agent_provider: agentProvider,
+        user_model: userModel,
+        user_provider: userProvider,
       })
     });
     const data = await res.json();
@@ -1170,6 +1303,8 @@ function showEvaluation(ev) {
 
   const reward = ev.reward || 0;
   const info = ev.info || {};
+  const ri = info.reward_info?.info || {};
+  const performedActions = info.reward_info?.actions || [];
 
   const card = document.createElement('div');
   const cls = reward >= 0.9 ? 'reward-high' : reward >= 0.5 ? 'reward-mid' : 'reward-low';
@@ -1180,53 +1315,136 @@ function showEvaluation(ev) {
   html += '<div style="font-size:12px; text-align:center; margin-bottom:12px; color:var(--text-dim);">Overall Reward</div>';
 
   const metrics = [
-    ['Final State', info.reward_info?.info?.r_actions_final],
-    ['Intermediate States', info.reward_info?.info?.r_actions_intermediate],
-    ['Tool Subset', info.reward_info?.info?.r_tool_subset],
-    ['Tool Execution', info.reward_info?.info?.r_tool_execution],
-    ['Policy Compliance', info.reward_info?.info?.r_policy],
-    ['Conversation End', info.reward_info?.info?.r_user_end_conversation],
+    ['Final State', ri.r_actions_final],
+    ['Intermediate States', ri.r_actions_intermediate],
+    ['Tool Subset', ri.r_tool_subset],
+    ['Tool Execution', ri.r_tool_execution],
+    ['Policy Compliance', ri.r_policy],
+    ['Conversation End', ri.r_user_end_conversation],
   ];
 
   for (const [label, val] of metrics) {
     if (val !== undefined && val !== null) {
-      const valColor = val >= 0 ? 'var(--text)' : 'var(--error)';
+      const valColor = val >= 0.5 ? 'var(--text)' : 'var(--error)';
       html += `<div class="eval-row"><span class="eval-label">${label}</span><span class="eval-value" style="color:${valColor}">${val.toFixed(3)}</span></div>`;
     }
   }
 
-  // Missing tools
-  const missingTools = info.reward_info?.info?.tool_subset_missing_tools;
-  if (missingTools && missingTools.length > 0) {
-    html += '<div style="margin-top:8px; font-size:11px; color:var(--warning); font-weight:600;">Missing Tools:</div><ul class="eval-list" style="color:var(--warning)">';
-    missingTools.forEach(t => html += `<li>${t}</li>`);
-    html += '</ul>';
-  }
-
-  // Tool execution errors
-  const toolErrors = info.reward_info?.info?.tool_execution_errors;
-  if (toolErrors && toolErrors.length > 0) {
-    html += '<div style="margin-top:8px; font-size:11px; color:var(--error); font-weight:600;">Tool Execution Errors:</div><ul class="eval-list">';
-    toolErrors.forEach(e => html += `<li>${e}</li>`);
-    html += '</ul>';
-  }
-
-  // Policy errors
-  const policyErrors = info.reward_info?.info?.policy_llm_errors;
-  if (policyErrors && policyErrors.length > 0) {
-    html += '<div style="margin-top:8px; font-size:11px; color:var(--error); font-weight:600;">Policy Violations:</div><ul class="eval-list">';
-    policyErrors.forEach(e => html += `<li>${e}</li>`);
-    html += '</ul>';
-  }
-
-  const endKeyword = info.reward_info?.info?.end_conversation_keyword;
+  const endKeyword = ri.end_conversation_keyword;
   if (endKeyword) {
-    html += `<div class="eval-row" style="margin-top:8px"><span class="eval-label">End Keyword</span><span class="eval-value">${endKeyword}</span></div>`;
+    html += `<div class="eval-row" style="margin-top:4px"><span class="eval-label">End Keyword</span><span class="eval-value" style="color:var(--error)">${endKeyword}</span></div>`;
+  }
+
+  // ---------- Expandable details ----------
+  const detailId = 'eval-details-' + Date.now();
+  const hasDetails = (ri.tool_subset_missing_tools?.length > 0)
+    || (ri.tool_execution_errors?.length > 0)
+    || (ri.policy_llm_errors?.length > 0)
+    || (ri.policy_aut_errors?.length > 0)
+    || (performedActions.length > 0);
+
+  if (hasDetails) {
+    html += `<button class="eval-details-toggle" onclick="toggleEvalDetails('${detailId}', this)"><span class="arrow">▶</span> Inspect Details</button>`;
+    html += `<div class="eval-details-section" id="${detailId}">`;
+
+    // --- Action comparison: performed vs ground truth ---
+    const gtActions = info.task?.actions || [];
+    if (performedActions.length > 0 || gtActions.length > 0) {
+      const gtNames = new Set(gtActions.map(a => a.name));
+      const perfNames = new Set(performedActions.map(a => a.name));
+
+      html += '<div class="eval-detail-group">';
+      html += '<div class="eval-detail-title">Actions: Performed vs Ground Truth</div>';
+      html += '<div class="eval-action-compare">';
+      html += '<div class="eval-action-col-header">Performed</div>';
+      html += '<div class="eval-action-col-header">Ground Truth</div>';
+
+      const maxLen = Math.max(performedActions.length, gtActions.length);
+      for (let i = 0; i < maxLen; i++) {
+        // Performed action
+        if (i < performedActions.length) {
+          const a = performedActions[i];
+          const cls = gtNames.has(a.name) ? 'match' : 'extra';
+          const argsStr = a.kwargs ? JSON.stringify(a.kwargs) : '';
+          html += `<div class="eval-action-item ${cls}">${a.name}${argsStr ? '(' + argsStr + ')' : ''}</div>`;
+        } else {
+          html += '<div class="eval-action-item"></div>';
+        }
+        // Ground truth action
+        if (i < gtActions.length) {
+          const a = gtActions[i];
+          const cls = perfNames.has(a.name) ? 'match' : 'miss';
+          const argsStr = a.kwargs ? JSON.stringify(a.kwargs) : '';
+          html += `<div class="eval-action-item ${cls}">${a.name}${argsStr ? '(' + argsStr + ')' : ''}</div>`;
+        } else {
+          html += '<div class="eval-action-item"></div>';
+        }
+      }
+      html += '</div></div>';
+    }
+
+    // --- Missing tools ---
+    const missingTools = ri.tool_subset_missing_tools;
+    if (missingTools && missingTools.length > 0) {
+      html += '<div class="eval-detail-group">';
+      html += '<div class="eval-detail-title" style="color:var(--warning)">Missing Tools</div>';
+      html += '<ul class="eval-list" style="color:var(--warning)">';
+      missingTools.forEach(t => html += `<li>${t}</li>`);
+      html += '</ul></div>';
+    }
+
+    // --- Tool execution errors ---
+    const toolErrors = ri.tool_execution_errors;
+    if (toolErrors && toolErrors.length > 0) {
+      html += '<div class="eval-detail-group">';
+      html += '<div class="eval-detail-title" style="color:var(--error)">Tool Execution Errors</div>';
+      html += '<ul class="eval-list">';
+      toolErrors.forEach(e => html += `<li>${e}</li>`);
+      html += '</ul></div>';
+    }
+
+    // --- Policy LLM errors ---
+    const policyErrors = ri.policy_llm_errors;
+    if (policyErrors && policyErrors.length > 0) {
+      html += '<div class="eval-detail-group">';
+      html += '<div class="eval-detail-title" style="color:var(--error)">Policy Violations (LLM)</div>';
+      html += '<ul class="eval-list">';
+      policyErrors.forEach(e => html += `<li>${e}</li>`);
+      html += '</ul></div>';
+    }
+
+    // --- Policy AUT errors ---
+    const policyAutErrors = ri.policy_aut_errors;
+    if (policyAutErrors && policyAutErrors.length > 0) {
+      html += '<div class="eval-detail-group">';
+      html += '<div class="eval-detail-title" style="color:var(--error)">Policy Violations (Automatic)</div>';
+      html += '<ul class="eval-list">';
+      policyAutErrors.forEach(e => html += `<li>${typeof e === 'string' ? e : JSON.stringify(e)}</li>`);
+      html += '</ul></div>';
+    }
+
+    // --- Raw JSON ---
+    const rawJsonId = 'eval-raw-' + Date.now();
+    html += '<div class="eval-detail-group">';
+    html += `<button class="eval-details-toggle" onclick="toggleEvalDetails('${rawJsonId}', this)" style="margin-top:0"><span class="arrow">▶</span> Raw Evaluation Data</button>`;
+    html += `<div class="eval-details-section" id="${rawJsonId}">`;
+    html += `<div class="eval-raw-json">${JSON.stringify(info, null, 2)}</div>`;
+    html += '</div></div>';
+
+    html += '</div>'; // close eval-details-section
   }
 
   card.innerHTML = html;
   conv.appendChild(card);
   conv.scrollTop = conv.scrollHeight;
+}
+
+function toggleEvalDetails(id, btn) {
+  const section = document.getElementById(id);
+  if (section) {
+    section.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
 }
 
 // =====================================================================
