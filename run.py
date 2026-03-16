@@ -490,15 +490,15 @@ def main():
         "--task-type",
         type=str,
         default="base",
-        choices=["base", "hallucination", "disambiguation"],
-        help="The type of tasks to run",
+        choices=["all", "base", "hallucination", "disambiguation"],
+        help="The type of tasks to run (use 'all' to run base, hallucination, and disambiguation)",
     )
     parser.add_argument(
         "--task-split",
         type=str,
         default="train",
-        choices=["train", "test"],
-        help="The split of tasks to run (train or test)",
+        choices=["all", "train", "test"],
+        help="The split of tasks to run (use 'all' to run both train and test)",
     )
     parser.add_argument(
         "--num-tasks",
@@ -596,6 +596,13 @@ def main():
     print(args)
     random.seed(args.seed)
 
+    # Expand 'all' into concrete lists
+    ALL_TASK_TYPES = ["base", "hallucination", "disambiguation"]
+    ALL_TASK_SPLITS = ["train", "test"]
+
+    task_types = ALL_TASK_TYPES if args.task_type == "all" else [args.task_type]
+    task_splits = ALL_TASK_SPLITS if args.task_split == "all" else [args.task_split]
+
     time_str = datetime.now().strftime("%m%d%H%M%S")
 
     # Build filename components
@@ -608,22 +615,44 @@ def main():
     )
     user_thinking_suffix = "-user-thinking" if args.user_thinking else ""
 
-    # Determine task count for filename
-    task_count = len(args.task_id_filter) if args.task_id_filter else (args.num_tasks if args.num_tasks != -1 else "all")
-    file_str = f"{args.log_dir}/{args.task_type}_{args.task_split}/{args.model.split('/')[-1]}{thinking_suffix}{interleaved_thinking_suffix}{reasoning_effort_suffix}-{args.temperature}_tasks_{task_count}_user-{args.user_model}{user_thinking_suffix}-{args.user_strategy}_{time_str}.json"
-
     if not os.path.exists(args.log_dir):
         os.makedirs(args.log_dir)
-    results = run(
-        args=args,
-        ckpt_path=file_str,
-    )
 
-    display_metrics(results)
+    all_results: List[EnvRunResult] = []
 
-    with open(file_str, "w") as f:
-        json.dump([result.model_dump() for result in results], f, indent=2)
-        print(f"\n📄 Results saved to {file_str}\n")
+    for task_type in task_types:
+        for task_split in task_splits:
+            print(f"\n{'='*60}")
+            print(f"Running task_type={task_type}, task_split={task_split}")
+            print(f"{'='*60}")
+
+            # Override args for this combination
+            args.task_type = task_type
+            args.task_split = task_split
+
+            # Determine task count for filename
+            task_count = len(args.task_id_filter) if args.task_id_filter else (args.num_tasks if args.num_tasks != -1 else "all")
+            file_str = f"{args.log_dir}/{task_type}_{task_split}/{args.model.split('/')[-1]}{thinking_suffix}{interleaved_thinking_suffix}{reasoning_effort_suffix}-{args.temperature}_tasks_{task_count}_user-{args.user_model}{user_thinking_suffix}-{args.user_strategy}_{time_str}.json"
+
+            results = run(
+                args=args,
+                ckpt_path=file_str,
+            )
+
+            display_metrics(results)
+
+            with open(file_str, "w") as f:
+                json.dump([result.model_dump() for result in results], f, indent=2)
+                print(f"\n📄 Results saved to {file_str}\n")
+
+            all_results.extend(results)
+
+    # If we ran multiple combos, show aggregate metrics
+    if len(task_types) > 1 or len(task_splits) > 1:
+        print(f"\n{'='*60}")
+        print(f"Aggregate metrics across all {len(task_types)} type(s) x {len(task_splits)} split(s)")
+        print(f"{'='*60}")
+        display_metrics(all_results)
 
 
 if __name__ == "__main__":
