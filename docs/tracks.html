@@ -91,7 +91,7 @@
                     <tr>
                         <th>Compute</th>
                         <td>Bring your own API keys for development.</td>
-                        <td>Cerebras free tier during development; reserved server space for final evaluation</td>
+                        <td>Cerebras free tier for development</td>
                     </tr>
                 </tbody>
             </table>
@@ -149,20 +149,21 @@
 
             <h3>Motivation</h3>
             <p>Cerebras builds the world&rsquo;s fastest AI inference infrastructure. Their output speed is ~10x faster than conventional GPU-based inference (e.g., GLM-4.7 on Cerebras: ~1,000 tokens/s vs. Claude Sonnet 4.5 on GPUs: ~97 tokens/s). This means that within the same time budget, a Cerebras-hosted model can generate roughly 10x more tokens per assistant turn.</p>
-            <p>This track explores how to turn that extra token capacity into higher Pass^3 scores within the same time budget. For example, where a conventional agent gets one reasoning pass per turn, a Cerebras-hosted agent could run multiple passes, verify its own output, retry on failure, or explore alternative tool-call sequences - all before the time budget runs out. The question is: which strategies best convert raw output speed into measurable reliability gains?</p>
+            <p>This track explores how to turn that extra token capacity within the same time budget into higher Pass^3 scores. For example, where a conventional agent gets one reasoning pass per turn, a Cerebras-hosted agent could run multiple passes, verify its own output, or explore alternative tool-call sequences &mdash; all before the time budget runs out. The question is: which strategies best convert raw output speed into measurable reliability gains?</p>
+            <p>The focus is on the scaffolding architecture, not the underlying model. The time budget will be scaled to the models currently available on Cerebras&rsquo;s platform.</p>
 
             <h3>What You&rsquo;ll Build</h3>
-            <p>Same A2A-compatible agent format as Track 1, but your agent runs on Cerebras inference infrastructure. During development, participants use the Cerebras free tier. For the final submission, dedicated server space is reserved and runs are scheduled to allow fair and comparative evaluation.</p>
+            <p>Same A2A-compatible agent format as Track 1, but your agent runs on Cerebras inference infrastructure. During development, participants use the Cerebras free tier.</p>
 
             <h3>Allowed Approaches</h3>
             <ul>
                 <li>All approaches from Track 1 are permitted</li>
                 <li><strong>Additionally encouraged:</strong> Multi-pass reasoning, self-reflection loops, best-of-N sampling, search-based planning, verification chains, ensemble approaches</li>
-                <li>Agents must use Cerebras infrastructure (free tier for development; reserved server space for final evaluation)</li>
+                <li>Agents must use Cerebras infrastructure</li>
             </ul>
 
             <h3>Evaluation</h3>
-            <p>Ranked by a combination of <strong>innovative use of compute headroom</strong> and <strong>Pass^3 performance</strong>. Judges evaluate whether the approach meaningfully leverages fast inference in ways that differ from standard single-pass agent design. Evaluated based on the required technical report.</p>
+            <p>Ranked primarily by <strong>innovative use of compute headroom</strong> &mdash; how meaningfully the scaffolding leverages fast inference in ways that differ from standard single-pass agent design. Pass^3 is taken into account only as relative improvement over the chosen model as baseline, i.e. the delta the scaffolding produces, not the absolute score. Evaluation is based on the required technical report alongside the measured improvement.</p>
 
             <h3>Prizes</h3>
             <ul>
