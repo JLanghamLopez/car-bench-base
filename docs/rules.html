@@ -81,6 +81,7 @@
             <ul>
                 <li>Teams must register before their first submission to the official leaderboard.</li>
                 <li>Registration requires: team name, member names and affiliations, contact email, and track selection (Open, Cerebras Fast-Reasoning with Codex Pro, or both).</li>
+                <li>Track 2 participation is limited to 15 teams because sponsored Codex Pro access is limited.</li>
                 <li>Registration is open from May 18, 2026.</li>
                 <li>Teams may update their team members up to 7 days before the final evaluation deadline.</li>
             </ul>
@@ -99,7 +100,7 @@
                 <li>Retrieval-augmented generation (RAG) over environment data</li>
                 <li>External knowledge bases or pre-computed lookup tables (provided they do not encode test set answers)</li>
             </ul>
-            <p><strong>Cerebras Fast-Reasoning with Codex Pro Track:</strong> Track 2 submissions must use the Codex Pro / Cerebras Spark setup described in the starter kit. Agents must expose the same dockerized A2A interface as Track 1. Multi-pass reasoning, private planning, self-verification, retries, and ensembles are allowed, but the agent must respect the official time budget and must not exploit evaluator internals. The time budget will be announced soon.</p>
+            <p><strong>Cerebras Fast-Reasoning with Codex Pro Track:</strong> Track 2 submissions must use the Codex Pro / Cerebras Spark setup described in the starter kit. Agents must expose the same dockerized A2A interface as Track 1. Multi-pass reasoning, private planning, self-verification, retries, and ensembles are allowed, but the agent must respect the official time budget and must not exploit evaluator internals. Participation is limited to 15 teams. The time budget will be announced soon.</p>
         </div>
 
         <!-- 4. Prohibited behaviors -->
@@ -118,13 +119,15 @@
         <div class="rule-section" id="submission">
             <h2>5. Submission Mechanics</h2>
             <ul>
-                <li>Submissions are dockerized A2A-compatible agents (template provided in the starter kit).</li>
-                <li><strong>Dev set:</strong> Unlimited submissions. Results appear on the live dev leaderboard.</li>
+                <li>Submissions are dockerized A2A-compatible agents built from the starter kit interface.</li>
+                <li>Participants submit a registered GHCR image reference plus scenario/config details. Digest-pinned images are preferred for reproducibility.</li>
+                <li>Submission configs should list required environment variable or secret names, but must never contain secret values.</li>
+                <li><strong>Development validation:</strong> Participants may run public local, Docker, and GHCR scenario configs themselves before submitting.</li>
                 <li><strong>Hidden test set:</strong> Two official evaluation rounds. 1st round (Jul 10): each team gets one submission and receives scores. Final (Jul 19): each team gets one submission. Final rankings are determined from the Jul 19 round.</li>
                 <li><strong>Technical report:</strong> A 4-page technical report (IJCAI format, excluding references) is required for award eligibility. Deadline: July 26, 2026 (AoE).</li>
             </ul>
             <div class="callout warning">
-                <strong>More details soon.</strong> Full submission instructions will be published.
+                <strong>More details soon.</strong> The exact submission form and required metadata fields will be published before the first official evaluation round.
             </div>
         </div>
 
@@ -153,7 +156,7 @@
         <div class="rule-section" id="data-use">
             <h2>8. Data Use</h2>
             <ul>
-                <li>The CAR-bench dataset is released under the <a href="https://github.com/CAR-bench/car-bench/blob/main/LICENSE" target="_blank">MIT License</a>.</li>
+                <li>The starter kit and public CAR-bench data are released under the <a href="https://github.com/CAR-bench/car-bench-ijcai/blob/main/LICENSE" target="_blank">MIT License</a>.</li>
                 <li>Participants may use the training and dev data for other research, provided they cite the original paper.</li>
                 <li>The hidden test set will <strong>not</strong> be released during the competition. Post-competition release will be announced separately.</li>
                 <li>Results and rankings will be made publicly available on the competition website after the final evaluation.</li>
@@ -185,7 +188,7 @@
                 <h4>Resources</h4>
                 <ul>
                     <li><a href="https://huggingface.co/papers/2601.22027" target="_blank">Paper</a></li>
-                    <li><a href="https://github.com/CAR-bench/car-bench" target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/CAR-bench/car-bench-ijcai" target="_blank">GitHub</a></li>
                     <li><a href="https://huggingface.co/datasets/johanneskirmayr/car-bench-dataset" target="_blank">Dataset (HF)</a></li>
                     <li><a href="benchmark.html">Benchmark Details</a></li>
                     <li><a href="faq.html">FAQ</a></li>
@@ -196,12 +199,12 @@
                 <h4>Community</h4>
                 <ul>
                     <li><a href="https://discord.gg/MBUxhuCvn" target="_blank">Discord</a></li>
-                    <li><a href="https://github.com/CAR-bench/car-bench" target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/CAR-bench/car-bench-ijcai" target="_blank">GitHub</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; 2026 CAR-bench. Released under the <a href="https://github.com/CAR-bench/car-bench/blob/main/LICENSE">MIT License</a>.</span>
+            <span>&copy; 2026 CAR-bench. Released under the <a href="https://github.com/CAR-bench/car-bench-ijcai/blob/main/LICENSE">MIT License</a>.</span>
             <div class="footer-bottom-links">
                 <a href="organizers.html#contact">Contact</a>
                 <a href="disclaimer.html">Disclaimer</a>

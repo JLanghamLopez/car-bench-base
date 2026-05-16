@@ -80,9 +80,16 @@
             </details>
 
             <details class="faq-item">
+                <summary class="faq-q">Is Track 2 limited?</summary>
+                <div class="faq-a">
+                    <p>Yes. Track 2 is limited to 15 participating teams because sponsored Codex Pro access is limited. Selected registered teams receive Codex Pro access for the competition period.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
                 <summary class="faq-q">What happens if my agent hangs during evaluation?</summary>
                 <div class="faq-a">
-                    <p>Each task has a time limit. If your agent doesn&rsquo;t respond within the limit, that trial is scored as a failure. The evaluation continues with remaining tasks. For dev submissions, you can debug and resubmit immediately. For test set evaluations, there is a 24-hour grace window to fix and resubmit.</p>
+                    <p>Each task has a time limit. If your agent doesn&rsquo;t respond within the limit, that trial is scored as a failure. The evaluation continues with remaining tasks. The official time budget and any resubmission grace rules will be announced before hidden evaluation.</p>
                 </div>
             </details>
 
@@ -103,7 +110,7 @@
             <details class="faq-item">
                 <summary class="faq-q">Will the test set be released after the competition?</summary>
                 <div class="faq-a">
-                    <p>Post-competition release will be decided and announced separately. The train and dev sets are available now under the MIT License.</p>
+                    <p>Post-competition release will be decided and announced separately. The public train and validation splits are available under the MIT License.</p>
                 </div>
             </details>
 
@@ -138,7 +145,7 @@
             <details class="faq-item">
                 <summary class="faq-q">Can I use the training data for fine-tuning?</summary>
                 <div class="faq-a">
-                    <p>Yes. You may fine-tune on the provided training data using any method (SFT, RLHF, DPO, etc.). You may also use the dev set for validation. The training and dev data are released under the MIT License.</p>
+                    <p>Yes. You may fine-tune on the provided training data using any method (SFT, RLHF, DPO, etc.). You may also use the public validation split for model and harness selection. The public data is released under the MIT License.</p>
                 </div>
             </details>
 
@@ -152,7 +159,28 @@
             <details class="faq-item">
                 <summary class="faq-q">How does the A2A protocol work?</summary>
                 <div class="faq-a">
-                    <p>The A2A (Agent-to-Agent) protocol is a structured communication format between the evaluation environment (Evaluator Agent) and your agent (Agent-under-Test). Your agent receives user messages and tool results, and sends back responses and tool calls. The starter kit includes a complete working example. See the <a href="data.html">Data &amp; Starter Kit</a> page for details.</p>
+                    <p>The A2A (Agent-to-Agent) protocol is the structured communication format between the CAR-bench evaluator and your agent under test. Your agent receives user messages, tool definitions, and tool results. It sends back user-facing responses and/or tool calls. The evaluator is the only component that executes CAR-bench tools and computes scores. See the <a href="data.html">Data &amp; Starter Kit</a> page for the quickstart.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-q">What are scenario TOML files?</summary>
+                <div class="faq-a">
+                    <p>Scenario TOML files are run configs. They specify which evaluator and agent to start or pull, which task split to run, how many tasks and trials to execute, and which environment variables, Docker images, or GHCR images to use. Start with <code>local_smoke.toml</code>, then move to Docker and GHCR scenarios before submission.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-q">What exactly do I submit?</summary>
+                <div class="faq-a">
+                    <p>Final details will be announced, but the expected submission is a registered GHCR Docker image plus scenario/config details. Use a digest-pinned image when possible. Include required environment variable or secret names, but never include secret values. Organizers will run the submitted image/config on hidden evaluation infrastructure.</p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-q">What is Codex app-server in Track 2?</summary>
+                <div class="faq-a">
+                    <p>The Track 2 reference agents use the Codex CLI in <code>app-server</code> mode as a warm JSON-RPC runtime for subscription-backed Codex inference. The evaluator still sees only normal A2A text responses and tool calls. The app-server is internal to the submitted agent harness; it does not execute CAR-bench tools and should not be used for shell, file, or network side effects during benchmark inference.</p>
                 </div>
             </details>
 
@@ -194,7 +222,7 @@
                 <h4>Resources</h4>
                 <ul>
                     <li><a href="https://huggingface.co/papers/2601.22027" target="_blank">Paper</a></li>
-                    <li><a href="https://github.com/CAR-bench/car-bench" target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/CAR-bench/car-bench-ijcai" target="_blank">GitHub</a></li>
                     <li><a href="https://huggingface.co/datasets/johanneskirmayr/car-bench-dataset" target="_blank">Dataset (HF)</a></li>
                     <li><a href="benchmark.html">Benchmark Details</a></li>
                     <li><a href="faq.html">FAQ</a></li>
@@ -205,12 +233,12 @@
                 <h4>Community</h4>
                 <ul>
                     <li><a href="https://discord.gg/MBUxhuCvn" target="_blank">Discord</a></li>
-                    <li><a href="https://github.com/CAR-bench/car-bench" target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/CAR-bench/car-bench-ijcai" target="_blank">GitHub</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; 2026 CAR-bench. Released under the <a href="https://github.com/CAR-bench/car-bench/blob/main/LICENSE">MIT License</a>.</span>
+            <span>&copy; 2026 CAR-bench. Released under the <a href="https://github.com/CAR-bench/car-bench-ijcai/blob/main/LICENSE">MIT License</a>.</span>
             <div class="footer-bottom-links">
                 <a href="organizers.html#contact">Contact</a>
                 <a href="disclaimer.html">Disclaimer</a>

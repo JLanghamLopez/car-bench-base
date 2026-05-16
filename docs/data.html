@@ -42,7 +42,7 @@
 <div class="page-header">
     <div class="container">
         <h1>Data &amp; Starter Kit</h1>
-        <p>Everything you need to go from zero to first submission in under 20 minutes.</p>
+        <p>Clone the starter kit, choose a track, run a scenario config, and validate the same Docker interface organizers will use.</p>
     </div>
 </div>
 
@@ -51,10 +51,10 @@
     <div class="container">
         <div class="rule-section" style="max-width:820px;margin:0 auto;">
             <h2>1. What You Get</h2>
-            <p>The competition provides everything you need to develop, test, and submit your agent:</p>
+            <p>The competition starter kit provides the code and configs needed to develop, test, package, and submit a CAR-bench agent:</p>
             <ul>
-                <li><strong>Train set:</strong> 125 tasks (50 Base, 50 Hallucination, 25 Disambiguation) with full labels</li>
-                <li><strong>Dev set:</strong> 125 tasks (50 Base, 50 Hallucination, 25 Disambiguation) with full labels</li>
+                <li><strong>Train set:</strong> 129 public tasks (50 Base, 48 Hallucination, 31 Disambiguation) for development.</li>
+                <li><strong>Public validation split:</strong> 125 public tasks (50 Base, 50 Hallucination, 25 Disambiguation) for local validation. These are not the hidden final tasks.</li>
                 <li><strong>Hidden test set:</strong> held out, used during the two official evaluation rounds (1st: Jul 10, final: Jul 19)</li>
             </ul>
 
@@ -67,13 +67,15 @@
             </div>
 
             <ul>
-                <li><strong>Baseline agents:</strong> Two reference tool-calling agents - one for the Open Track (using Claude Opus 4.6, scoring .58 Pass^3) and one for the Cerebras Track (using a Cerebras-hosted LLM)</li>
-                <li><strong>Docker template:</strong> Pre-configured container for submission</li>
-                <li><strong>A2A protocol spec:</strong> Agent-to-Agent communication protocol used by the evaluation environment</li>
+                <li><strong>Evaluator:</strong> a dockerized CAR-bench evaluator that owns the simulated user, tools, environment, trajectories, and scoring.</li>
+                <li><strong>Track 1 starter:</strong> a minimal agent-under-test template for any model, provider, or architecture.</li>
+                <li><strong>Track 2 references:</strong> Codex Pro / Cerebras Spark agents, including direct JSON, planner/executor, and Python-call DSL variants.</li>
+                <li><strong>Scenario configs:</strong> TOML files that define local, Docker, and GHCR validation runs.</li>
+                <li><strong>A2A interface:</strong> the message protocol used between the evaluator and your submitted agent.</li>
             </ul>
 
             <div style="display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:1.2rem;">
-                <a href="https://github.com/CAR-bench/car-bench" class="btn btn-primary btn-sm" target="_blank">GitHub Repo</a>
+                <a href="https://github.com/CAR-bench/car-bench-ijcai" class="btn btn-primary btn-sm" target="_blank">GitHub Repo</a>
                 <a href="https://huggingface.co/datasets/johanneskirmayr/car-bench-dataset" class="btn btn-outline btn-sm" target="_blank">Dataset on HF</a>
             </div>
         </div>
@@ -86,9 +88,100 @@
         <div class="rule-section" style="max-width:820px;margin:0 auto;">
             <h2>2. Quickstart</h2>
 
-            <div class="callout warning">
-                <strong>Coming soon.</strong> The GitHub repository is receiving final updates for the competition setup. The full quickstart guide with step-by-step instructions will be available when the competition opens on May 18, 2026.
+            <p>Start with a smoke scenario before changing the agent. Scenario TOML files are the run configs: they choose the evaluator, the agent under test, the task split, task counts, trials, and environment variables. The full, copy-pasteable setup and troubleshooting guide lives in the starter repo README; this page gives the high-level path.</p>
+
+            <p><strong>Prerequisites:</strong> Python 3.11+, <a href="https://docs.astral.sh/uv/" target="_blank">uv</a>, Docker for Docker/GHCR validation, and the API credentials required by your chosen track.</p>
+
+            <h3>Participant workflow</h3>
+            <ol>
+                <li><strong>Choose a track:</strong> Track 1 is open to any model, framework, or architecture. Track 2 is limited to 15 teams and uses Codex Pro with Cerebras-hosted Spark for fast-reasoning harnesses.</li>
+                <li><strong>Run a scenario config:</strong> start with <code>local_smoke.toml</code>, then move to public validation and Docker scenarios.</li>
+                <li><strong>Prepare submission:</strong> publish a GHCR image and provide scenario/config details with required secret names, not secret values.</li>
+            </ol>
+
+            <h3>Common setup</h3>
+            <p>For serious participation, fork the starter repository first and clone your fork. Your fork is where your agent code, Dockerfile, scenario configs, and technical-report notes should live. Official submission will still be a GHCR Docker image plus config, not a pull request.</p>
+            <div class="callout">
+                <pre style="margin:0;white-space:pre-wrap;"><code>git clone https://github.com/YOUR_ORG_OR_USERNAME/car-bench-ijcai.git
+cd car-bench-ijcai
+python3.11 -m venv .venv
+source .venv/bin/activate
+./scripts/setup_car_bench.sh
+cp .env.example .env</code></pre>
             </div>
+
+            <p>Add the evaluator key to <code>.env</code>. Track 1 participants add whatever model-provider keys their agent needs. Track 2 participants also authenticate Codex CLI; for Docker runs, use a dedicated mounted <code>CODEX_HOME</code>.</p>
+
+            <h3>Install by track</h3>
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Track</th>
+                            <th>Install command</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Track 1</th>
+                            <td><code>uv sync --extra track-1-agent --extra car-bench-evaluator</code></td>
+                        </tr>
+                        <tr>
+                            <th>Track 2</th>
+                            <td><code>uv sync --extra car-bench-evaluator</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Track 2 Codex CLI setup</h3>
+            <p>Track 2 reference agents use the Codex CLI in app-server mode for subscription-backed inference. Install Codex CLI with the official <a href="https://developers.openai.com/codex/cli" target="_blank">OpenAI Codex CLI instructions</a>, then authenticate it before local Codex runs:</p>
+            <div class="callout">
+                <pre style="margin:0;white-space:pre-wrap;"><code>mkdir -p "$HOME/.codex-car-bench"
+CODEX_HOME="$HOME/.codex-car-bench" codex login
+CODEX_HOME="$HOME/.codex-car-bench" codex login status</code></pre>
+            </div>
+            <p>Then set <code>CODEX_HOME_HOST</code> in <code>.env</code> to the absolute path of that dedicated Codex home for Docker runs.</p>
+
+            <h3>Choose your first run</h3>
+            <div class="table-wrapper">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Track</th>
+                            <th>Local smoke command</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Track 1</th>
+                            <td><code>uv run car-bench-run scenarios/track_1_agent_under_test/local_smoke.toml --show-logs</code></td>
+                        </tr>
+                        <tr>
+                            <th>Track 2 Codex JSON</th>
+                            <td><code>uv run car-bench-run scenarios/track_2_agent_under_test_codex/local_smoke.toml --show-logs</code></td>
+                        </tr>
+                        <tr>
+                            <th>Track 2 planner/executor</th>
+                            <td><code>uv run car-bench-run scenarios/track_2_agent_under_test_codex_planner/local_smoke.toml --show-logs</code></td>
+                        </tr>
+                        <tr>
+                            <th>Track 2 Python-call DSL</th>
+                            <td><code>uv run car-bench-run scenarios/track_2_agent_under_test_codex_python/local_smoke.toml --show-logs</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Validation modes</h3>
+            <ul>
+                <li><strong>Local smoke:</strong> fastest iteration; one train task from each task type.</li>
+                <li><strong>Local test set:</strong> full public validation split with three trials.</li>
+                <li><strong>Docker local build:</strong> verifies your Dockerfile and runtime assumptions.</li>
+                <li><strong>GHCR validation:</strong> tests the image/config style expected for official submission.</li>
+            </ul>
+
+            <p>For full commands, scenario structure, and Track 2 Codex setup details, read the starter repo README after cloning.</p>
         </div>
     </div>
 </section>
@@ -172,7 +265,7 @@
                 <li><strong>Consistency-focused strategies:</strong> Best-of-N with self-verification; majority voting; Monte Carlo tree search</li>
             </ul>
 
-            <p>These directions are not prescriptive - they&rsquo;re signposts. Any approach that improves Pass^3 is welcome.</p>
+            <p>These directions are not prescriptive - they&rsquo;re signposts. Any approach that improves reliable behavior is welcome, as long as it respects the benchmark boundary and does not exploit evaluator internals.</p>
         </div>
     </div>
 </section>
@@ -181,9 +274,9 @@
 <section class="section-alt" style="text-align:center;">
     <div class="container">
         <h2 class="section-title">Ready?</h2>
-        <p class="section-subtitle">Clone the repo, run the baseline, and submit your first score.</p>
+        <p class="section-subtitle">Clone the starter repo, run a smoke scenario, then validate your agent in Docker.</p>
         <div class="hero-buttons">
-            <a href="https://github.com/CAR-bench/car-bench" class="btn btn-primary btn-lg" target="_blank">GitHub Repo</a>
+            <a href="https://github.com/CAR-bench/car-bench-ijcai" class="btn btn-primary btn-lg" target="_blank">GitHub Repo</a>
             <a href="tracks.html" class="btn btn-outline btn-lg">Choose a Track</a>
         </div>
     </div>
@@ -211,7 +304,7 @@
                 <h4>Resources</h4>
                 <ul>
                     <li><a href="https://huggingface.co/papers/2601.22027" target="_blank">Paper</a></li>
-                    <li><a href="https://github.com/CAR-bench/car-bench" target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/CAR-bench/car-bench-ijcai" target="_blank">GitHub</a></li>
                     <li><a href="https://huggingface.co/datasets/johanneskirmayr/car-bench-dataset" target="_blank">Dataset (HF)</a></li>
                     <li><a href="benchmark.html">Benchmark Details</a></li>
                     <li><a href="faq.html">FAQ</a></li>
@@ -222,12 +315,12 @@
                 <h4>Community</h4>
                 <ul>
                     <li><a href="https://discord.gg/MBUxhuCvn" target="_blank">Discord</a></li>
-                    <li><a href="https://github.com/CAR-bench/car-bench" target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/CAR-bench/car-bench-ijcai" target="_blank">GitHub</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; 2026 CAR-bench. Released under the <a href="https://github.com/CAR-bench/car-bench/blob/main/LICENSE">MIT License</a>.</span>
+            <span>&copy; 2026 CAR-bench. Released under the <a href="https://github.com/CAR-bench/car-bench-ijcai/blob/main/LICENSE">MIT License</a>.</span>
             <div class="footer-bottom-links">
                 <a href="organizers.html#contact">Contact</a>
                 <a href="disclaimer.html">Disclaimer</a>

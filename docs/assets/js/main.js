@@ -1,4 +1,4 @@
-/* CAR-bench Challenge — shared behaviours */
+/* CAR-bench Challenge - shared behaviours */
 
 // Mobile nav toggle
 function toggleNav() {

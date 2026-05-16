@@ -122,7 +122,7 @@
         <p class="section-subtitle">A comprehensive evaluation framework for LLM agent reliability in real-world, user-facing applications.</p>
 
         <div class="stats-bar">
-            <div class="stat-item"><div class="stat-number">250</div><div class="stat-label">Evaluation Tasks</div></div>
+            <div class="stat-item"><div class="stat-number">254</div><div class="stat-label">Public Tasks</div></div>
             <div class="stat-item"><div class="stat-number">58</div><div class="stat-label">Interconnected Tools</div></div>
             <div class="stat-item"><div class="stat-number">19</div><div class="stat-label">Domain Policies</div></div>
             <div class="stat-item"><div class="stat-number">12</div><div class="stat-label">Frontier Models Evaluated</div></div>
@@ -172,13 +172,13 @@
                 <div class="task-label">Hallucination Tasks</div>
                 <h3>Limit-Awareness</h3>
                 <p>Derived from Base tasks by removing a required component: (a) an entire tool, (b) a specific tool parameter, or (c) expected tool result data. This makes the request unsatisfiable. The agent must detect the missing capability and explicitly acknowledge that it cannot fulfill the request, rather than fabricating results or proceeding incorrectly.</p>
-                <span class="stat">100 tasks</span>
+                <span class="stat">98 tasks</span>
             </div>
             <div class="task-card disambiguation">
                 <div class="task-label">Disambiguation Tasks</div>
                 <h3>Uncertainty Resolution</h3>
                 <p>Augment Base tasks with controlled ambiguity that requires two-level meta-reasoning: (1) detecting that ambiguity exists and (2) selecting the most informative action to resolve it. Agents should exhaust internal resolution first (e.g., checking stored user preferences or context via tools) before falling back to asking the user for clarification. Premature action or unnecessary clarification requests both count as failures.</p>
-                <span class="stat">50 tasks</span>
+                <span class="stat">56 tasks</span>
             </div>
         </div>
     </div>
@@ -470,7 +470,7 @@
                 <h4>Resources</h4>
                 <ul>
                     <li><a href="https://huggingface.co/papers/2601.22027" target="_blank">Paper</a></li>
-                    <li><a href="https://github.com/CAR-bench/car-bench" target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/CAR-bench/car-bench-ijcai" target="_blank">GitHub</a></li>
                     <li><a href="https://huggingface.co/datasets/johanneskirmayr/car-bench-dataset" target="_blank">Dataset (HF)</a></li>
                     <li><a href="benchmark.html">Benchmark Details</a></li>
                     <li><a href="faq.html">FAQ</a></li>
@@ -481,12 +481,12 @@
                 <h4>Community</h4>
                 <ul>
                     <li><a href="https://discord.gg/MBUxhuCvn" target="_blank">Discord</a></li>
-                    <li><a href="https://github.com/CAR-bench/car-bench" target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/CAR-bench/car-bench-ijcai" target="_blank">GitHub</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; 2026 CAR-bench. Released under the <a href="https://github.com/CAR-bench/car-bench/blob/main/LICENSE">MIT License</a>.</span>
+            <span>&copy; 2026 CAR-bench. Released under the <a href="https://github.com/CAR-bench/car-bench-ijcai/blob/main/LICENSE">MIT License</a>.</span>
             <div class="footer-bottom-links">
                 <a href="organizers.html#contact">Contact</a>
                 <a href="disclaimer.html">Disclaimer</a>

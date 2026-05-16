@@ -74,8 +74,8 @@
                         <td>Codex Pro-backed agents, with gpt-5.3-codex-spark as the recommended fast executor</td>
                     </tr>
                     <tr>
-                        <th>Evaluation Metric</th>
-                        <td>Pass^3 (task solved in all 3 trials)</td>
+                        <th>Ranking / Awards</th>
+                        <td>Rank Award by Pass^3, plus Best Innovation Award for agent harnessing and reliability design</td>
                         <td>Combination of innovative compute use + Pass^3 performance</td>
                     </tr>
                     <tr>
@@ -86,7 +86,58 @@
                     <tr>
                         <th>Compute</th>
                         <td>Bring your own API keys for development.</td>
-                        <td>Sponsored Codex Pro access for selected registered participants during the competition period</td>
+                        <td>Limited to 15 participating teams with sponsored Codex Pro access during the competition period</td>
+                    </tr>
+                    <tr>
+                        <th>Starter Package</th>
+                        <td><code>src/track_1_agent_under_test/</code></td>
+                        <td><code>src/track_2_agent_under_test_codex*/</code></td>
+                    </tr>
+                    <tr>
+                        <th>Submission Shape</th>
+                        <td colspan="2">A registered GHCR Docker image plus scenario/config details. Organizers run it through the same A2A evaluator boundary on hidden tasks.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Participant workflow -->
+<section class="section-alt">
+    <div class="container">
+        <p class="eyebrow">Participant Workflow</p>
+        <h2 class="section-title">Same Interface, Different Harnesses</h2>
+        <p class="section-subtitle">Both tracks submit the same kind of agent. The difference is what your internal reasoning harness is allowed and expected to use.</p>
+
+        <div class="table-wrapper" style="max-width:960px;margin:0 auto;">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Step</th>
+                        <th>What You Do</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>1. Clone starter kit</th>
+                        <td>Use the competition starter repository, run the setup script, and choose a Track 1 or Track 2 scenario folder.</td>
+                    </tr>
+                    <tr>
+                        <th>2. Implement the agent</th>
+                        <td>Your agent receives A2A messages with user text, tool definitions, and tool results. It returns user-facing text and/or tool-call data.</td>
+                    </tr>
+                    <tr>
+                        <th>3. Validate locally</th>
+                        <td>Run <code>local_smoke.toml</code> first, then public validation scenarios. Scenario TOML files are the run configs.</td>
+                    </tr>
+                    <tr>
+                        <th>4. Validate Docker/GHCR</th>
+                        <td>Generate Docker Compose from a Docker scenario, then test the image/config style organizers will run.</td>
+                    </tr>
+                    <tr>
+                        <th>5. Submit</th>
+                        <td>Submit the GHCR image reference, scenario/config details, and required secret names. Never submit secret values.</td>
                     </tr>
                 </tbody>
             </table>
@@ -101,16 +152,17 @@
             <h2 style="border-bottom-color:var(--color-primary-light);">Track 1: Open Track</h2>
 
             <h3>Motivation</h3>
-            <p>The Open Track is designed for maximum flexibility: use any model, any provider, and any architecture to build the most reliable agent possible. The goal is to close the gap between frontier model capability and deployment-ready consistency on CAR-bench.</p>
+            <p>The Open Track is designed for maximum flexibility: use any model, provider, framework, and architecture to build the most reliable agent possible. You can use Claude Agents SDK, LangGraph, AutoGen, custom orchestration, fine-tuning pipelines, retrieval systems, or any other harness that respects the benchmark boundary. The goal is to close the gap between frontier model capability and deployment-ready consistency on CAR-bench.</p>
             <p>Current state-of-the-art achieves only 58% consistent success (Pass^3). There is significant room for improvement through better scaffolding, prompting, planning, and agent design.</p>
 
             <h3>What You&rsquo;ll Build</h3>
-            <p>A dockerized Agent-under-Test that communicates via the A2A (Agent-to-Agent) protocol with the CAR-bench evaluation environment. Your agent receives user requests, interacts with tools, and produces responses that are evaluated for correctness, policy compliance, limit-awareness, and disambiguation behavior.</p>
+            <p>A dockerized agent under test that communicates via the A2A (Agent-to-Agent) protocol with the CAR-bench evaluator. Your agent receives user requests, tool definitions, and tool results; it returns user-facing responses and/or tool calls. The evaluator executes tools and scores correctness, policy compliance, limit-awareness, and disambiguation behavior.</p>
 
             <h3>Allowed Approaches</h3>
             <ul>
                 <li><strong>Prompting:</strong> System prompts, few-shot, chain-of-thought, self-reflection</li>
-                <li><strong>Scaffolding:</strong> Planning-execution separation, tool-use strategies, retry logic</li>
+                <li><strong>Frameworks:</strong> Claude Agents SDK, LangGraph, AutoGen, custom A2A services, or any equivalent setup</li>
+                <li><strong>Scaffolding:</strong> Planning-execution separation, tool-use strategies, retry logic, verifiers, critics, rerankers</li>
                 <li><strong>Multi-agent:</strong> Subagents, agent skills, orchestration patterns</li>
                 <li><strong>Fine-tuning:</strong> SFT, RLHF, DPO on the training data</li>
                 <li><strong>Context engineering:</strong> RAG over environment data, dynamic context management</li>
@@ -122,8 +174,9 @@
 
             <h3>Prizes</h3>
             <ul>
-                <li><strong>Rank Award:</strong> $5,000 pool of Anthropic API Credits (splitting to be announced), sponsored by Anthropic</li>
-                <li><strong>Best Innovation Award:</strong> For novel approaches - efficient use of open models, creative architectures, ... Evaluated based on the required technical report.</li>
+                <li><strong>Rank Award:</strong> For top Pass^3 performance on the hidden test set.</li>
+                <li><strong>Best Innovation Award:</strong> For novel agent harnessing, reliability design, efficient model use, and thoughtful engineering. Evaluated based on the required technical report.</li>
+                <li><strong>$5,000 pool of Anthropic API Credits:</strong> Split across Rank Award and Best Innovation Award winners (details to be announced), sponsored by Anthropic.</li>
                 <li>More prizes to be announced</li>
                 <li>Certificates for award winners</li>
                 <li>(Optional) Oral presentation at IJCAI-ECAI 2026 competition slot</li>
@@ -145,11 +198,12 @@
 
             <h3>Motivation</h3>
             <p>Track 2 gives participants sponsored Codex Pro access and focuses on Codex agents built around gpt-5.3-codex-spark, a Codex model served on Cerebras infrastructure. Spark&rsquo;s fast inference makes it practical to explore more reasoning, verification, retry, and search work inside a fixed assistant-turn budget.</p>
-            <p>This track explores how to turn that inference speed into higher Pass^3 scores. For example, where a conventional agent gets one reasoning pass per turn, a Track 2 agent could run multiple Spark passes, verify its own output, or explore alternative tool-call sequences &mdash; all before the time budget runs out. The question is: which strategies best convert fast inference into measurable reliability gains?</p>
+            <p>This track explores how to turn that inference speed into higher Pass^3 scores. For example, where a conventional agent gets one reasoning pass per turn, a Track 2 agent could run multiple Spark passes, verify its own output, or explore alternative tool-call sequences - all before the time budget runs out. The question is: which strategies best convert fast inference into measurable reliability gains?</p>
             <p>The focus is on the scaffolding architecture, not only the underlying model. Participants may combine Spark with larger Codex models for planner, verifier, or condenser steps, as long as the submitted A2A agent stays within the official time budget. The time budget will be announced soon.</p>
+            <p><strong>Participation is limited to 15 teams.</strong> Selected registered teams receive sponsored Codex Pro access for the competition period.</p>
 
             <h3>What You&rsquo;ll Build</h3>
-            <p>The same dockerized A2A-compatible agent format as Track 1. The reference starter kit includes Codex agents that keep a warm codex app-server runtime and use gpt-5.3-codex-spark as the fast executor. Participants may replace the internal harness while preserving the same A2A boundary.</p>
+            <p>The same dockerized A2A-compatible agent format as Track 1. The reference starter kit includes Codex agents that keep a warm <code>codex app-server</code> runtime and use gpt-5.3-codex-spark as the fast executor. Participants may replace the internal planner, executor, verifier, retry, or ensemble logic while preserving the same A2A boundary.</p>
 
             <h3>Allowed Approaches</h3>
             <ul>
@@ -159,13 +213,13 @@
             </ul>
 
             <h3>Evaluation</h3>
-            <p>Ranked primarily by <strong>innovative use of inference-time compute headroom</strong> &mdash; how meaningfully the scaffolding leverages fast inference in ways that differ from standard single-pass agent design. Pass^3 is taken into account only as relative improvement over the chosen model as baseline, i.e. the delta the scaffolding produces, not the absolute score. Evaluation is based on the required technical report alongside the measured improvement.</p>
+            <p>Ranked primarily by <strong>innovative use of inference-time compute headroom</strong> - how meaningfully the scaffolding leverages fast inference in ways that differ from standard single-pass agent design. Pass^3 is taken into account only as relative improvement over the chosen model as baseline, i.e. the delta the scaffolding produces, not the absolute score. Evaluation is based on the required technical report alongside the measured improvement.</p>
 
             <h3>Prizes</h3>
             <ul>
                 <li><strong>Cerebras Innovation Award:</strong> For the best demonstration of compute-aware agent design</li>
                 <li><strong>Codex Pro:</strong> 12-month subscriptions for the top 2 winning teams (one per team), sponsored by OpenAI</li>
-                <li><strong>Codex Pro:</strong> 3-month subscriptions for 15 registered participants (duration of competition), sponsored by OpenAI</li>
+                <li><strong>Codex Pro:</strong> 3-month subscriptions for up to 15 selected participating teams during the competition period, sponsored by OpenAI</li>
                 <li>More prizes to be announced</li>
                 <li>Certificates for award winners</li>
                 <li>(Optional) Oral presentation at IJCAI-ECAI 2026 competition slot</li>
@@ -183,7 +237,7 @@
 <section class="section-alt" style="text-align:center;">
     <div class="container">
         <h2 class="section-title">Ready to Start?</h2>
-        <p class="section-subtitle">Set up the baseline agent, run it on the dev set, and submit your first score in under 20 minutes.</p>
+        <p class="section-subtitle">Set up a starter agent, run a local smoke scenario, then validate the Docker image you will submit.</p>
         <div class="hero-buttons">
             <a href="data.html" class="btn btn-primary btn-lg">Data &amp; Starter Kit</a>
             <a href="rules.html" class="btn btn-outline btn-lg">Read the Rules</a>
@@ -213,7 +267,7 @@
                 <h4>Resources</h4>
                 <ul>
                     <li><a href="https://huggingface.co/papers/2601.22027" target="_blank">Paper</a></li>
-                    <li><a href="https://github.com/CAR-bench/car-bench" target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/CAR-bench/car-bench-ijcai" target="_blank">GitHub</a></li>
                     <li><a href="https://huggingface.co/datasets/johanneskirmayr/car-bench-dataset" target="_blank">Dataset (HF)</a></li>
                     <li><a href="benchmark.html">Benchmark Details</a></li>
                     <li><a href="faq.html">FAQ</a></li>
@@ -224,12 +278,12 @@
                 <h4>Community</h4>
                 <ul>
                     <li><a href="https://discord.gg/MBUxhuCvn" target="_blank">Discord</a></li>
-                    <li><a href="https://github.com/CAR-bench/car-bench" target="_blank">GitHub</a></li>
+                    <li><a href="https://github.com/CAR-bench/car-bench-ijcai" target="_blank">GitHub</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; 2026 CAR-bench. Released under the <a href="https://github.com/CAR-bench/car-bench/blob/main/LICENSE">MIT License</a>.</span>
+            <span>&copy; 2026 CAR-bench. Released under the <a href="https://github.com/CAR-bench/car-bench-ijcai/blob/main/LICENSE">MIT License</a>.</span>
             <div class="footer-bottom-links">
                 <a href="organizers.html#contact">Contact</a>
                 <a href="disclaimer.html">Disclaimer</a>
