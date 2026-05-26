@@ -352,13 +352,19 @@ nav.topbar {
     max-width: 900px;
     margin: 0 auto 1rem;
     text-align: center;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
 }
 
 .hero h1 em {
     color: var(--color-accent);
     font-style: normal;
     font-weight: 800;
+}
+
+.hero-inline-prize {
+    color: var(--color-accent);
+    font-weight: 800;
+    white-space: nowrap;
 }
 
 .hero .subtitle {
