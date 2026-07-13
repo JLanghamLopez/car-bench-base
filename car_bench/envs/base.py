@@ -69,11 +69,13 @@ class Env(object):
         user_strategy: Union[str, UserStrategy],
         user_model: str,
         user_provider: Optional[str] = None,
+        user_base_url: Optional[str] = None,
         user_thinking: bool = False,
         task_index: Optional[int] = None,
         policy_evaluator_strategy: Optional[Union[str, PolicyEvaluatorStrategy]] = None,
         policy_evaluator_model: Optional[str] = None,
         policy_evaluator_provider: Optional[str] = None,
+        policy_evaluator_base_url: Optional[str] = None,
         evaluate_policy: Optional[bool] = False,
         score_tool_execution_errors: Optional[bool] = False,
         score_policy_errors: Optional[bool] = False,
@@ -97,12 +99,14 @@ class Env(object):
             user_strategy=user_strategy,
             model=user_model,
             provider=user_provider,
+            base_url=user_base_url,
             user_thinking=user_thinking,
         )
         self.policy_evaluator = load_policy_evaluator(
             policy_evaluator_strategy=policy_evaluator_strategy,
             model=policy_evaluator_model,
             provider=policy_evaluator_provider,
+            base_url=policy_evaluator_base_url,
         )
         self.actions: List[Action] = []
         self.state_hashes: List[str] = []  # Track intermediate state hashes

@@ -51,11 +51,12 @@ class HumanUserSimulationEnv(BaseUserSimulationEnv):
 
 
 class LLMUserSimulationEnv(BaseUserSimulationEnv):
-    def __init__(self, model: str, provider: str, user_thinking: bool = False) -> None:
+    def __init__(self, model: str, provider: str, base_url: str, user_thinking: bool = False) -> None:
         super().__init__()
         self.messages: List[Dict[str, Any]] = []
         self.model = model
         self.provider = provider
+        self.base_url = base_url
         self.total_cost = 0.0
         # self.reset()
         self.task_type = TaskType.BASE
@@ -79,6 +80,7 @@ class LLMUserSimulationEnv(BaseUserSimulationEnv):
                     "custom_llm_provider": self.provider,
                     "response_format": self.response_format,
                     "temperature": 0.0,
+                    "base_url": self.base_url,
                 }
                 if self.user_thinking:
                     completion_kwargs["reasoning_effort"] = "low"
@@ -269,6 +271,7 @@ def load_user(
     user_strategy: Union[str, UserStrategy],
     model: Optional[str] = "gpt-4.1-mini",
     provider: Optional[str] = None,
+    base_url: Optional[str] = None,
     user_thinking: bool = False,
 ) -> BaseUserSimulationEnv:
     if isinstance(user_strategy, str):
@@ -281,6 +284,6 @@ def load_user(
         if provider is None:
             raise ValueError("LLM user strategy requires a model provider")
         return LLMUserSimulationEnv(
-            model=model, provider=provider, user_thinking=user_thinking
+            model=model, provider=provider, base_url=base_url, user_thinking=user_thinking
         )
     raise ValueError(f"Unknown user strategy {user_strategy}")

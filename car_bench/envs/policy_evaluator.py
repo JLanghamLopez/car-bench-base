@@ -45,11 +45,12 @@ class HumanPolicyEvaluatorEnv(BasePolicyEvaluatorEnv):
 
 
 class LLMPolicyEvaluatorEnv(BasePolicyEvaluatorEnv):
-    def __init__(self, model: str, provider: str) -> None:
+    def __init__(self, model: str, provider: str, base_url: str) -> None:
         super().__init__()
         self.model = model
         self.provider = provider
         self.total_cost = 0.0
+        self.base_url = base_url
 
     def generate_evaluation(self, messages: List[Dict[str, Any]]) -> str:
         # response format is PolicyEvaluatorResponseFormat
@@ -59,6 +60,7 @@ class LLMPolicyEvaluatorEnv(BasePolicyEvaluatorEnv):
             messages=messages,
             response_format=PolicyEvaluatorResponseFormat,
             temperature=0.0,
+            base_url=self.base_url,
         )
         message = res.choices[0].message
         self.messages.append(message.model_dump())
@@ -354,6 +356,7 @@ def load_policy_evaluator(
     policy_evaluator_strategy: Union[str, PolicyEvaluatorStrategy],
     model: Optional[str] = "gpt-4.1-mini",
     provider: Optional[str] = None,
+    base_url: Optional[str] = None,
 ) -> BasePolicyEvaluatorEnv:
     if isinstance(policy_evaluator_strategy, str):
         policy_evaluator_strategy = PolicyEvaluatorStrategy(policy_evaluator_strategy)
@@ -364,23 +367,23 @@ def load_policy_evaluator(
             raise ValueError("LLM user strategy requires a model")
         if provider is None:
             raise ValueError("LLM user strategy requires a model provider")
-        return LLMPolicyEvaluatorEnv(model=model, provider=provider)
+        return LLMPolicyEvaluatorEnv(model=model, provider=provider, base_url=base_url)
     elif policy_evaluator_strategy == PolicyEvaluatorStrategy.REACT:
         if model is None:
             raise ValueError("React user strategy requires a model")
         if provider is None:
             raise ValueError("React user strategy requires a model provider")
-        return ReactUserSimulationEnv(model=model, provider=provider)
+        return ReactUserSimulationEnv(model=model, provider=provider, base_url=base_url)
     elif policy_evaluator_strategy == PolicyEvaluatorStrategy.VERIFY:
         if model is None:
             raise ValueError("Verify user strategy requires a model")
         if provider is None:
             raise ValueError("Verify user strategy requires a model provider")
-        return VerifyUserSimulationEnv(model=model, provider=provider)
+        return VerifyUserSimulationEnv(model=model, provider=provider, base_url=base_url)
     elif policy_evaluator_strategy == PolicyEvaluatorStrategy.REFLECTION:
         if model is None:
             raise ValueError("Reflection user strategy requires a model")
         if provider is None:
             raise ValueError("Reflection user strategy requires a model provider")
-        return ReflectionUserSimulationEnv(model=model, provider=provider)
+        return ReflectionUserSimulationEnv(model=model, provider=provider, base_url=base_url)
     raise ValueError(f"Unknown user strategy {policy_evaluator_strategy}")
